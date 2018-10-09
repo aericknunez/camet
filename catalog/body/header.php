@@ -6,36 +6,75 @@
     
     <!--Double navigation-->
     <header>
-        
- 
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav sn-bg-4 fixed">
+            <ul class="custom-scrollbar">
+                <!-- Logo -->
+                <li>
+                    <div class="logo-wrapper waves-light">
+                        <a href="<?php echo BASE_URL ?>"><img src="assets/img/logo/mdb-transparent.png" class="img-fluid flex-center"></a>
+                    </div>
+                </li>
+                <!--/. Logo -->
+     
+                <!--Search Form-->
+                <li>
+                    <form class="search-form" role="search">
+                        <div class="form-group md-form mt-0 pt-1 waves-light">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </li>
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Submit blog<i class="fa fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="waves-effect">Submit listing</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">Registration form</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Instruction<i class="fa fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body">
+                                <ul class="list-unstyled">
+                                    <li><a href="#" class="waves-effect">For bloggers</a>
+                                    </li>
+                                    <li><a href="#" class="waves-effect">For authors</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+                        <li><a href="?user" class="collapsible-header waves-effect arrow-r"><i class="fa fa-user"></i> Usuarios<i class="fa fa-angle-down rotate-icon"></i></a>
+                            
+                        </li>
+
+
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
+            <div class="sidenav-bg mask-strong"></div>
+        </div>
+        <!--/. Sidebar navigation -->
         <!-- Navbar -->
         <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
             <!-- SideNav slide-out button -->
-            <div class="breadcrumb-dn mr-auto">
-                <p>Panel de administraci&oacuten</p>
+            <div class="float-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
             </div>
-            <ul class="nav navbar-nav nav-flex-icons ml-auto">
-                <li class="nav-item">
-                    <a href="<?php echo BASE_URL . "admin/fileUpload/"; ?>" class="nav-link"><i class="fa fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Imagenes</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo BASE_URL . "admin/?add"; ?>" class="nav-link"><i class="fa fa-comments-o"></i> <span class="clearfix d-none d-sm-inline-block">Agregar</span></a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo BASE_URL . "admin/?view"; ?>" class="nav-link"><i class="fa fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Ver</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="<?php echo BASE_URL . "plantilla/"; ?>">Action</a>
-                        <a class="dropdown-item" href="<?php echo BASE_URL . "plantilla/?user"; ?>">Usuarios</a>
-                        <a class="dropdown-item" href="application/includes/Logout.php">Logout</a>
-                    </div>
-                </li>
-            </ul>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn mr-auto">
+                <p><?php echo $_SESSION["nombre"]; ?></p>
+            </div>
+            
         </nav>
         <!-- /.Navbar -->
     </header>
-    <!--/.Double navigation-->
+
+    <main>

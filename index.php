@@ -6,9 +6,9 @@ sec_session_start();
 
 
 if (login_check($mysqli) == true) {
-    include("catalog/index.php");
+    include_once 'catalog/index.php';
 } else {
-    include("catalog/login.php");
+    include_once 'catalog/login.php';
 }
 
 ?>
