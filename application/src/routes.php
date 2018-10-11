@@ -11,11 +11,10 @@ include_once '../../application/common/mysqli.php';
 $db = new dbConn();
 
 
-include_once '../../system/user/Usuarios.php';
-$usuarios = new Usuarios;
-
 /// usuarios
 if($_REQUEST["op"]=="1"){
+include_once '../../system/user/Usuarios.php';
+$usuarios = new Usuarios;
 $passw1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_STRING);
 $passw2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_STRING);
 $usuarios->CompararPass($passw1, $passw2); 
@@ -24,11 +23,34 @@ $usuarios->CompararPass($passw1, $passw2);
 
 
 if($_REQUEST["op"]=="2"){
+include_once '../../system/user/Usuarios.php';
+$usuarios = new Usuarios;
 $alert->EliminarUsuario($_REQUEST["iden"], $_REQUEST["username"]);
 }
 
 if($_REQUEST["op"]=="3"){
+include_once '../../system/user/Usuarios.php';
+$usuarios = new Usuarios;
 $usuarios->EliminarUsuario($_REQUEST["iden"], $_REQUEST["username"]);
+}
+
+
+if($_REQUEST["op"]=="4"){
+include_once '../../system/addcliente/Clientes.php';
+$clientes = new Clientes;
+	if($_POST["nombre"] != NULL and $_POST["dui"] != NULL){
+	$clientes->AddCliente($_POST["nombre"],$_POST["dui"],$_POST["dir_casa"],$_POST["dir_cobro"],$_POST["tel_casa"],$_POST["tel_cel"]);	
+	}
+	else{
+	Alerts::Alerta("warning","Error","Hay datos vacios! Por favor llene los datos necesarios");
+
+	}
+
+}
+
+if($_REQUEST["op"]=="5"){
+include_once '../../system/addcliente/Clientes.php';
+Clientes::VerClientes($_REQUEST["iden"]);
 }
 
 

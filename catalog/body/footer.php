@@ -1,6 +1,6 @@
     </main>
 
-    <footer class="page-footer text-center text-md-left pt-4">
+<!--     <footer class="page-footer text-center text-md-left pt-4">
 
         <div class="footer-copyright py-3 text-center">
             <div class="container-fluid">
@@ -9,3 +9,4 @@
         </div>
 
     </footer>
+ -->

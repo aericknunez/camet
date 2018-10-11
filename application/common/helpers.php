@@ -1,20 +1,37 @@
 <?php
-class Helpers
-{
-    public static function format($numero)
-    {  
+class Helpers{
+
+    public function __construct(){
+
+    } 
+
+    public function primerapalabra($nombre){
+        $parte = explode(" ",$nombre); 
+        return $parte[0];
+    }  
+    
+    public function segundapalabra($nombre){
+        $parte = explode(" ",$nombre); 
+        return $parte[1];
+    }
+
+    public function tercerapalabra($nombre){
+        $parte = explode(" ",$nombre); 
+        return $parte[2];
+    }
+
+    public function format($numero){  
         $format=number_format($numero,2,'.','.');
         return $format;
      } 
 
 
-     public static function formatFecha($fecha)
-    {  
+     public function formatFecha($fecha){  
         $format=strtotime($fecha);
         return $format;
      }
 
-     public static function fecha($fecha)
+     public function fecha($fecha)
     {  
         $dia=substr($fecha,0,2);
         $mes=substr($fecha,3,2);

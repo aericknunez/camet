@@ -11,3 +11,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 if($_REQUEST["modal"]=="registrar") include("system/modal/modal/registrar.php");
 
 if($_REQUEST["modal"]=="register_success") include("system/modal/modal/register_success.php");
+
+if($_REQUEST["modal"]=="addc") include("system/modal/modal/agregarcliente.php");

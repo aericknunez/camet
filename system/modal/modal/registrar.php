@@ -20,16 +20,17 @@ include_once 'application/includes/register.inc.php'; // [para registrar]
         ?>
 
         <form method="post" name="registration_form" action="?modal=registrar">
-            <input type='text' name='username' id='username' class="form-control" placeholder="Usuario" /><br>
-            <input type="text" name="email" id="email" class="form-control" placeholder="email"/><br>
+            <input type='text' name='username' id='username' class="my-1 form-control" placeholder="Usuario" />
+            <input type="text" name="email" id="email" class="my-2 form-control" placeholder="email"/>
             <input type="password"
                              name="password" 
-                             id="password" class="form-control" placeholder="Password"/><br>
+                             id="password" class="my-1 form-control" placeholder="Password"/>
             <input type="password" 
                                      name="confirmpwd" 
-                                     id="confirmpwd" class="form-control" placeholder="Confirmar Password"/><br>
+                                     id="confirmpwd" class="my-1 form-control" placeholder="Confirmar Password"/>
             <input type="button" 
-                   value="Registrar" 
+                   value="Registrar"
+                   class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect" 
                    onclick="return regformhash(this.form,
                                    this.form.username,
                                    this.form.email,

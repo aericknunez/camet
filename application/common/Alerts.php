@@ -1,6 +1,10 @@
 <?php 
 class Alerts{
 
+      public function __construct(){
+        
+      }
+
 
        public function Alerta($tipo,$encabezado,$texto){ //tipo = warning , success , error , info , danger
         echo '<script>
@@ -71,7 +75,7 @@ class Alerts{
     
     <a id="deluser" op="3" iden="'.$iden.'" username="'.$user.'" class="btn btn-default waves-effect waves-light" >Eliminar</a>
     
-    <a data-toggle="modal" data-dismiss="alert" aria-hidden="true" class="btn btn-danger waves-effect waves-light">Cancelar</a>
+    <a href="?user" class="btn btn-danger waves-effect waves-light">Cancelar</a>
 
   </div>';
     }

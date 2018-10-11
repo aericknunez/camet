@@ -30,7 +30,7 @@ if (!class_exists('dbConn')):
 			return $this->result;
 		}
         
-        // SELECT GRUPO
+        // SELECT GROUP
 		public function selectGroup($select, $from, $where = '') {
 			$this->result = null;
 			$this->charset();
@@ -38,12 +38,8 @@ if (!class_exists('dbConn')):
 			unset($select, $from, $where);
 			return $this->result;
 		}
-
-
-		    
         
-
-        // INSERTAR
+        // INSERT
 		public function insert($into, $array) {
 			$return = 0;
 			$data   = array();
@@ -60,24 +56,7 @@ if (!class_exists('dbConn')):
 			return $return;
 		}
         
-  //        // INSERTAR sin escapar
-		// public function insertno($into, $array) {
-		// 	$return = 0;
-		// 	$data   = array();
-		// 	foreach ($array as $key => $value) {
-		// 		$data[] = str_replace('==', '=', $key . "='" . $value . "'");
-		// 	}
-		// 	$data = implode(', ', $data);
-		// 	$this->charset();
-		// 	if ($this->insert = $this->db_connect->query("INSERT INTO {$into} SET {$data}")) {
-		// 		$this->insert_id = $this->db_connect->insert_id;
-		// 		unset($into, $array, $data);
-		// 		$return = 1;
-		// 	}
-		// 	return $return;
-		// }
-
-        // ACTUALIZAR
+        // UPDATE
 		public function update($table, $array, $where = '') {
 			$return = 0;
 			$data   = array();
@@ -93,7 +72,7 @@ if (!class_exists('dbConn')):
             return $return;
 		}
         
-        // BORRAR
+        // DELETE
 		public function delete($from, $where = '') {
 			$return = 0;
 			if ($this->delete = $this->db_connect->query("DELETE FROM {$from} {$where}")) {
@@ -103,17 +82,17 @@ if (!class_exists('dbConn')):
 			return $return;
 		}
         
-        // EJECUTAR QUERY LIBRE
+        // FREE QUERY EXECUTE
 		public function query($query) {
 			return $this->db_connect->query($query);
 		}
         
-        // LASTAR TABLAS
+        // LIST TABLES
         public function listTables() {
             return array_column(mysqli_fetch_all($this->db_connect->query('SHOW TABLES')), 0);
         }
         
-        // LISTAR COLUMNAS
+        // LIST FIELDS
         public function listFields($from) {
             $a = array();
             if ($b = $this->db_connect->query("select * from {$from}")) {
@@ -142,22 +121,22 @@ if (!class_exists('dbConn')):
             return $a;
         }
         
-        // CERRAR CONEXION
+        // CLOSE CONNECTION
         public function close() {
 			$this->reset();
 			unset($this->db_connect, $this->select, $this->num_rows, $this->insert, $this->update, $this->delete, $this->insert_id, $this->charset, $this->insert_ids, $this->result);
 			$this->conn()->close();
 		}
               
-        // CONSTRUCTOR
+        // CLASS CONSTRUCTOR
 		function __construct() {
             $a = func_get_args();
             $i = func_num_args();
             if ($i == 4) {
-                // FROM ARGUMENTOS RECIBIDOS
+                // FROM RECEIVED ARGUMENTS
                 $this->HOST = $a[0]; $this->USER = $a[1]; $this->PASSWORD = $a[2]; $this->DATABASE = $a[3];
             } else {
-                // FROMCONSTANTES PRE DEFINIDAS
+                // FROM PRE-DEFINED CONSTANTS
                 $this->HOST = HOST; $this->USER = USER; $this->PASSWORD = PASSWORD; $this->DATABASE = DATABASE;            
             }
             $this->reset();
@@ -165,11 +144,23 @@ if (!class_exists('dbConn')):
             return;
 		}
         
-        // FUNCIONES AUXILIARES
-        public function escape($data) { return $this->db_connect->real_escape_string($data); }
-		public function insert_id() { return $this->insert_id; }         
-		protected function reset() { unset($this->conn()->affected_rows, $this->conn()->connect_errno, $this->conn()->connect_error, $this->conn()->error_list, $this->conn()->field_count, $this->conn()->insert_id, $this->conn()->warning_count); } 
-        protected function charset() { $this->db_connect->query("SET NAMES '" . $this->charset . "'"); $this->db_connect->query("SET CHARACTER SET " . $this->charset); }         
+        // AUXILIARY FUNCTIONS
+        public function escape($data) { 
+        	return $this->db_connect->real_escape_string($data); 
+        }
+
+		public function insert_id() { 
+			return $this->insert_id; 
+		}   
+
+		protected function reset() { 
+			unset($this->conn()->affected_rows, $this->conn()->connect_errno, $this->conn()->connect_error, $this->conn()->error_list, $this->conn()->field_count, $this->conn()->insert_id, $this->conn()->warning_count); 
+		} 
+        protected function charset() { 
+        	$this->db_connect->query("SET NAMES '" . $this->charset . "'"); $this->db_connect->query("SET CHARACTER SET " . $this->charset); 
+        }
+
+                 
         
 	}
     

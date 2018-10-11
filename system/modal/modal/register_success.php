@@ -18,6 +18,8 @@ $datos = array();
         $i = $db->insert_id();
 
         unset($_SESSION['newuser']);
+
+        include_once 'application/common/Alerts.php';
         header("location: ?user");
     } 
 $db->close();
@@ -51,8 +53,6 @@ $db->close();
     <option value="" disabled selected>Elija una Opcion</option>
     <option value="2">Administrador</option>
     <option value="3">Usuario</option>
-    <option value="4">Cocina</option>
-    <option value="5">Cocina</option>
 </select>
     <br>
   
