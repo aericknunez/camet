@@ -60,18 +60,20 @@ class Clientes{
 			    <tr>
 			      <th scope="col">Cod</th>
 			      <th scope="col">Nombre</th>
-			      <th scope="col">Direcci&oacuten</th>
+			      <th scope="col">Direcci&oacuten cobro</th>
 			      <th scope="col">Tel&eacutefono</th>
+			      <th scope="col">Ver</th>
 			    </tr>
 			  </thead>
 			  <tbody>';
 
 	    foreach ($a as $b) {
 	echo '<tr>
-	      <th scope="row">'. $b["codigo"] .'</th>
+	      <th scope="row">'. $b["id"] .'</th>
 	      <td>'. $b["cliente"] .'</td>
 	      <td>'. $b["dir_cobro"] .'</td>
 	      <td>'. $b["tel_casa"] .'</td>
+	      <td><a id="cliente" op="6" iden="'. $b["id"] .'" class="btn-floating btn-sm blue-gradient"><i class="fa fa-eye"></i></a></td>
 	    </tr>';	    
     }
 	    echo '</tbody>

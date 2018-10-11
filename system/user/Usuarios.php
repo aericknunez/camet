@@ -101,7 +101,7 @@ class Usuarios{
 $a = $db->query("select id, username, email from login_members");
     foreach ($a as $b) {
 $user=sha1($b["username"]);
-if ($r = $db->select("nombre, tipo", "login_userdata", "where user = '$user' and td = ".$_SESSION['td']."")) { 
+if ($r = $db->select("nombre, tipo", "login_userdata", "where user = '$user'")) { 
 	if($r["tipo"] == "1") $tipo = "Super Admin";
 	if($r["tipo"] == "2") $tipo = "Administrador";
 	if($r["tipo"] == "3") $tipo = "Usuario";

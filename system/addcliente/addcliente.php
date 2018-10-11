@@ -10,7 +10,9 @@ $db = new dbConn();
 </div>
 </div>
 
-<div id="contenido_usuarios">
+<div id="contenido_clientes"></div>
+
+<div id="contenido_paginador">
 <?php 
 include_once 'system/addcliente/Clientes.php';
 Clientes::VerClientes(NULL);

@@ -62,8 +62,7 @@ FindClientes::VerDetalle($_REQUEST["iden"]); //ver lista de clientes paginados
 
 if($_REQUEST["op"]=="7"){ //clientes buscados
 include_once '../../system/findcliente/Clientes.php';
-//FindClientes::VerBusqueda($_POST["search-box"]); //ver lista de clientes paginados
-print_r($_POST);
+FindClientes::VerBusqueda($_POST["search-box"]); //ver lista de clientes paginados
 }
 
 ?>
