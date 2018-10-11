@@ -11,6 +11,7 @@ $(document).ready(function()
 
 	});
 
+
 	$('#btn-pass-usuarios').click(function(e){ /// para el formulario
 		e.preventDefault();
 		$.ajax({

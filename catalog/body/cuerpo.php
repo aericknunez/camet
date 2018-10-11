@@ -8,7 +8,7 @@
 	</div>
 
 
-	<div class="col-xs-4 col-sm-3 col-md-3">
+	<div class="col-xs-4 col-sm-3 col-md-3 d-none d-sm-block">
 		aqui ira el logo
 	</div>
 

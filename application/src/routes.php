@@ -35,7 +35,7 @@ $usuarios->EliminarUsuario($_REQUEST["iden"], $_REQUEST["username"]);
 }
 
 
-if($_REQUEST["op"]=="4"){
+if($_REQUEST["op"]=="4"){ // agrega cliente
 include_once '../../system/addcliente/Clientes.php';
 $clientes = new Clientes;
 	if($_POST["nombre"] != NULL and $_POST["dui"] != NULL){
@@ -50,9 +50,20 @@ $clientes = new Clientes;
 
 if($_REQUEST["op"]=="5"){
 include_once '../../system/addcliente/Clientes.php';
-Clientes::VerClientes($_REQUEST["iden"]);
+Clientes::VerClientes($_REQUEST["iden"]); //ver lista de clientes paginados
 }
 
 
+if($_REQUEST["op"]=="6"){ //mostrar cliente seleccionado
+include_once '../../system/findcliente/Clientes.php';
+FindClientes::VerDetalle($_REQUEST["iden"]); //ver lista de clientes paginados
+
+}
+
+if($_REQUEST["op"]=="7"){ //clientes buscados
+include_once '../../system/findcliente/Clientes.php';
+//FindClientes::VerBusqueda($_POST["search-box"]); //ver lista de clientes paginados
+print_r($_POST);
+}
 
 ?>

@@ -17,6 +17,9 @@ echo '<script>
 elseif(isset($_GET["addcliente"])) {
 echo '<script type="text/javascript" src="assets/js/query/addcliente.js"></script>';
 } 
+elseif(isset($_GET["findcliente"])) {
+echo '<script type="text/javascript" src="assets/js/query/findcliente.js"></script>';
+} 
 elseif(isset($_GET["user"])) {
 echo '<script type="text/javascript" src="assets/js/query/user.js"></script>';
 } 

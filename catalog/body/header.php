@@ -29,7 +29,7 @@
                 <div class="collapsible-body">
                     <ul class="list-unstyled">
                         <li><a href="?addcliente" class="waves-effect">Agregar Cliente</a></li>
-                        <li><a href="#" class="waves-effect">Listar Clientes</a></li>
+                        <li><a href="?findcliente" class="waves-effect">Buscar Clientes</a></li>
                     </ul>
                 </div>
             </li>
