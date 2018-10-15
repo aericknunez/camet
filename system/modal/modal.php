@@ -13,3 +13,7 @@ if($_REQUEST["modal"]=="registrar") include("system/modal/modal/registrar.php");
 if($_REQUEST["modal"]=="register_success") include("system/modal/modal/register_success.php");
 
 if($_REQUEST["modal"]=="addc") include("system/modal/modal/agregarcliente.php");
+
+if($_REQUEST["modal"]=="addcable") include("system/modal/modal/agregarcable.php");
+
+if($_REQUEST["modal"]=="addinternet") include("system/modal/modal/agregarinternet.php");

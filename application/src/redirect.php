@@ -7,6 +7,10 @@ elseif(isset($_GET["addcliente"])) include_once 'system/addcliente/addcliente.ph
 
 elseif(isset($_GET["findcliente"])) include_once 'system/findcliente/findcliente.php';
 
+elseif(isset($_GET["cable"])) include_once 'system/cable/cable.php';
+
+elseif(isset($_GET["internet"])) include_once 'system/internet/internet.php';
+
 elseif(isset($_GET["user"])) include_once 'system/user/user.php';
 
 elseif(isset($_GET["upimages"])) include_once 'system/upimages/upimages.php';

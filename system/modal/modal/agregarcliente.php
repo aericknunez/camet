@@ -15,7 +15,7 @@
 
     <div class="form-row mb-4">
         <input type="text" id="nombre" name="nombre" class="form-control mb-4" placeholder="Nombre">
-        <input type="text" id="dui" name="dui" class="form-control mb-4" placeholder="DUI">
+        <input type="text" id="dui" name="dui"  maxlength="10" minlength="9" class="form-control mb-4" placeholder="DUI">
         <div class="col">
             <!-- First name -->
             <input type="text" id="tel_casa" name="tel_cel" class="form-control" placeholder="Telefono">

@@ -36,7 +36,8 @@
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-hand-pointer-o"></i> Contratos<i class="fa fa-angle-down rotate-icon"></i></a>
                 <div class="collapsible-body">
                     <ul class="list-unstyled">
-                        <li><a href="#" class="waves-effect">Agregar Contrato</a></li>
+                        <li><a href="?cable" class="waves-effect">Agregar Contrato Cable</a></li>
+                        <li><a href="?internet" class="waves-effect">Agregar Contrato Internet</a></li>
                         <li><a href="#" class="waves-effect">Buscar Contrato</a></li>
                     </ul>
                 </div>
