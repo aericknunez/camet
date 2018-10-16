@@ -25,6 +25,7 @@ echo '<script>
 	if($_GET["modal"] == "addinternetc"){
 	echo '<script type="text/javascript" src="assets/js/query/modal.internet.cliente.js"></script>';
 	}
+
 }
 elseif(isset($_GET["addcliente"])) {
 echo '<script type="text/javascript" src="assets/js/query/addcliente.js"></script>';
@@ -34,6 +35,9 @@ echo '<script type="text/javascript" src="assets/js/query/findcliente.js"></scri
 }
 elseif(isset($_GET["cable"])) {
 echo '<script type="text/javascript" src="assets/js/query/cable.js"></script>';
+} 
+elseif(isset($_GET["conexion"])) {
+echo '<script type="text/javascript" src="assets/js/query/conexion.js"></script>';
 } 
 elseif(isset($_GET["user"])) {
 echo '<script type="text/javascript" src="assets/js/query/user.js"></script>';

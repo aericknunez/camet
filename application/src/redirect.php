@@ -11,6 +11,8 @@ elseif(isset($_GET["cable"])) include_once 'system/cable/cable.php';
 
 elseif(isset($_GET["internet"])) include_once 'system/internet/internet.php';
 
+elseif(isset($_GET["conexion"])) include_once 'system/conexion/conexion.php';
+
 elseif(isset($_GET["user"])) include_once 'system/user/user.php';
 
 elseif(isset($_GET["upimages"])) include_once 'system/upimages/upimages.php';

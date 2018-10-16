@@ -221,5 +221,21 @@ $contratos = new ContratoInternet;
 }
 
 
+if($_REQUEST["op"]=="12"){
+include_once '../../system/conexion/Conexiones.php';
+Conexion::VerClientes($_REQUEST["iden"]); //paginacion conexion pendiente
+}
+
+if($_REQUEST["op"]=="13"){
+include_once '../../system/conexion/Conexiones.php';
+
+Conexion::Activar(
+$_REQUEST["iden"],
+date("d-m-Y"),
+Helpers::formatFecha(date("d-m-Y"))
+); //activar conexion
+
+
+}
 
 ?>

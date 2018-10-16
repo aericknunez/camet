@@ -55,7 +55,7 @@ class Clientes{
     $numerox=0;
     	if($a->num_rows > 0){
     	$numerox++;
-    	echo '<table class="table table-sm table-striped w-auto">
+    	echo '<table class="table table-sm">
 			  <thead>
 			    <tr>
 			      <th scope="col">Cod</th>

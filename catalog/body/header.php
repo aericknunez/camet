@@ -25,6 +25,9 @@
     <!-- Side navigation links -->
     <li>
         <ul class="collapsible collapsible-accordion">
+            
+            <li><a href="?conexion" class="collapsible-header waves-effect arrow-r"><i class="fa fa-tv"></i> Activar Conexi&oacuten<i class="fa fa-angle-down rotate-icon"></i></a></li>
+
             <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-chevron-right"></i> Clientes<i class="fa fa-angle-down rotate-icon"></i></a>
                 <div class="collapsible-body">
                     <ul class="list-unstyled">

@@ -12,6 +12,11 @@ class Helpers{
         if($string == "4") return "Cancelado";
     }
 
+    function TipoServicio($string) {
+        if($string == "1") return "Servicio de cable por television";
+        if($string == "2") return "Servicio de Internet";
+    }
+
     function Telefono($numero) {
         $numero=str_replace("-","",$numero);
 
