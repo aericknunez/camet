@@ -114,7 +114,7 @@ class ContratoInternet{
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
 					      <td>'. $velocidad .'</td>
-					      <td>'. $b["estado"] .'</td>
+					      <td>'. Helpers::EstadoContrato($b["estado"]) .'</td>
 					    </tr>';
 		    } // foreach
 			    echo '</tbody>
@@ -134,7 +134,7 @@ class ContratoInternet{
 public function InternetContratos(){
     	$db = new dbConn();
     
-	    $a = $db->query("SELECT * FROM contratos WHERE servicio='2' ORDER BY id DESC");
+	    $a = $db->query("SELECT * FROM contratos WHERE servicio='2' ORDER BY id desc LIMIT 25");
 		    if($a->num_rows > 0)
 		    {
 		    	echo '<table class="table table-sm">
@@ -167,7 +167,7 @@ public function InternetContratos(){
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
 					      <td>'. $velocidad .' MB</td>
-					      <td>'. $b["estado"] .'</td>
+					      <td>'. Helpers::EstadoContrato($b["estado"]) .'</td>
 					    </tr>';
 		    } // foreach
 			    echo '</tbody>

@@ -33,11 +33,11 @@ if ($r = $db->select("cliente", "clientes", "WHERE id = ".$_REQUEST["iden"].""))
     </div>
      <div class="form-row mb-1">
         <div class="col">
-            <input placeholder="04" type="text" maxlength="2" minlength="2" id="fechacobro" name="fechacobro" class="form-control">
+            <input type="text" maxlength="2" minlength="2" id="fechacobro" name="fechacobro" class="form-control">
             <label for="fechacobro">Fecha de cobro</label>
         </div>
         <div class="col">
-           <input placeholder="15.00" type="text" id="cuota" name="cuota" class="form-control">
+           <input type="text" id="cuota" name="cuota" class="form-control">
             <label for="cuota">Cuota Establecida</label>
 
         </div>
@@ -53,12 +53,12 @@ if ($r = $db->select("cliente", "clientes", "WHERE id = ".$_REQUEST["iden"].""))
             <label for="tcontrato">Tipo Contrato</label>
         </div>
         <div class="col">
-           <input placeholder="2" type="text" id="velocidad" name="velocidad" class="form-control">
+           <input type="text" id="velocidad" name="velocidad" class="form-control">
             <label for="velocidad">Velocidad en MB</label>
 
         </div>
         <div class="col">
-           <input placeholder="FTTH" type="text" id="tecnologia" name="tecnologia" class="form-control">
+           <input type="text" id="tecnologia" name="tecnologia" class="form-control">
             <label for="tecnologia">Tecnologia</label>
 
         </div>

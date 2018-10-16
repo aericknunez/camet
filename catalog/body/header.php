@@ -38,8 +38,7 @@
                     <ul class="list-unstyled">
                         <li><a href="?cable" class="waves-effect">Agregar Contrato Cable</a></li>
                         <li><a href="?internet" class="waves-effect">Agregar Contrato Internet</a></li>
-                        <li><a href="#" class="waves-effect">Buscar Contrato</a></li>
-                    </ul>
+                     </ul>
                 </div>
             </li>
             

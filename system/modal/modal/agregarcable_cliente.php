@@ -32,11 +32,11 @@ if ($r = $db->select("cliente", "clientes", "WHERE id = ".$_REQUEST["iden"].""))
     </div>
      <div class="form-row mb-4">
         <div class="col">
-            <input placeholder="04" type="number" maxlength="2" minlength="2" id="fechacobro" name="fechacobro" class="form-control">
+            <input type="number" maxlength="2" minlength="2" id="fechacobro" name="fechacobro" class="form-control">
             <label for="fechacobro">Fecha de cobro</label>
         </div>
         <div class="col">
-           <input placeholder="15.00" type="text" id="cuota" name="cuota" class="form-control">
+           <input type="text" id="cuota" name="cuota" class="form-control">
             <label for="cuota">Cuota Establecida</label>
 
         </div>

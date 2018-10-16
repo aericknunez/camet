@@ -97,7 +97,7 @@ class ContratoCable{
 					      <td>'. $b["fechaInicio"] .'</td>
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
-					      <td>'. $b["estado"] .'</td>
+					      <td>'. Helpers::EstadoContrato($b["estado"]) .'</td>
 					    </tr>';
 		    } // foreach
 			    echo '</tbody>
@@ -117,7 +117,7 @@ class ContratoCable{
 public function CableContratos(){
     	$db = new dbConn();
     
-	    $a = $db->query("SELECT * FROM contratos WHERE servicio = 1 ORDER BY id DESC");
+	    $a = $db->query("SELECT * FROM contratos WHERE servicio = 1 ORDER BY id desc LIMIT 25");
 		    if($a->num_rows > 0)
 		    {
 		    	echo '<table class="table table-sm">
@@ -146,7 +146,7 @@ public function CableContratos(){
 					      <td>'. $b["fechaInicio"] .'</td>
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
-					      <td>'. $b["estado"] .'</td>
+					      <td>'. Helpers::EstadoContrato($b["estado"]) .'</td>
 					    </tr>';
 		    } // foreach
 			    echo '</tbody>

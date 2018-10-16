@@ -5,6 +5,13 @@ class Helpers{
 
     } 
 
+    function EstadoContrato($string) {
+        if($string == "1") return "Solicitado";
+        if($string == "2") return "Activo";
+        if($string == "3") return "Suspendido";
+        if($string == "4") return "Cancelado";
+    }
+
     function Telefono($numero) {
         $numero=str_replace("-","",$numero);
 
