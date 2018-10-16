@@ -30,6 +30,11 @@ class ContratoCable{
   	
     }
 
+	public function AddContratoCliente($client,$fi,$ff,$fif,$fff,$fc,$cuota){
+    	$db = new dbConn();
+	       $this->AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota);
+    }
+
 
 	public function AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota) {
 		$db = new dbConn();
@@ -70,6 +75,7 @@ class ContratoCable{
 	    $a = $db->query("SELECT * FROM contratos WHERE cliente='$user'");
 		    if($a->num_rows > 0)
 		    {
+		    	echo '<h3><br>Contratos asignados</h3>';
 		    	echo '<table class="table table-sm">
 			  <thead>
 			    <tr>
@@ -98,7 +104,7 @@ class ContratoCable{
 			</table>';
 	    
 	    } else {
-	    	echo "No se han encontrado contratos asignados a este cliente!";
+	    	echo "<br>No se han encontrado contratos asignados a este cliente!";
 	    }
 	    $a->close();
 	    
@@ -111,7 +117,7 @@ class ContratoCable{
 public function CableContratos(){
     	$db = new dbConn();
     
-	    $a = $db->query("SELECT * FROM contratos WHERE servicio='1' LIMIT 25 ");
+	    $a = $db->query("SELECT * FROM contratos WHERE servicio = 1 ORDER BY id DESC");
 		    if($a->num_rows > 0)
 		    {
 		    	echo '<table class="table table-sm">

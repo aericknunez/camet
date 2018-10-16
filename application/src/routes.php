@@ -160,4 +160,63 @@ if($helps->ComprobarDui($helps->Dui($_POST["dui"])) == TRUE){
 	}
 	/////
 }
+
+
+
+
+if($_REQUEST["op"]=="10"){ //agregar contrato cable de usuario
+include_once '../../system/cable/Contratos.php';
+$contratos = new ContratoCable;
+
+
+		if($_POST["client"] != NULL and $_POST["fechainicio_submit"] != NULL and $_POST["fechafin_submit"] != NULL){
+		
+		$contratos->AddContratoCliente(
+			$_POST["client"],
+			$_POST["fechainicio_submit"],
+			$_POST["fechafin_submit"],
+			$helps->formatFecha($_POST["fechainicio_submit"]),
+			$helps->formatFecha($_POST["fechafin_submit"]),
+			$_POST["fechacobro"],
+			$_POST["cuota"]
+		);
+
+		}
+		else{
+		Alerts::Alerta("warning","Error","Hay datos vacios! Por favor llene los datos necesarios");
+
+		}
+	
+}
+
+
+
+
+
+if($_REQUEST["op"]=="11"){ //agregar contrato internet desde cliente
+include_once '../../system/internet/Contratos.php';
+$contratos = new ContratoInternet;
+
+		if($_POST["client"] != NULL and $_POST["fechainicio_submit"] != NULL and $_POST["fechafin_submit"] != NULL){
+		
+		$contratos->AddContratoCliente(
+			$_POST["client"],
+			$_POST["fechainicio_submit"],
+			$_POST["fechafin_submit"],
+			$helps->formatFecha($_POST["fechainicio_submit"]),
+			$helps->formatFecha($_POST["fechafin_submit"]),
+			$_POST["fechacobro"],
+			$_POST["cuota"],
+			$_POST["tcontrato"],
+			$_POST["velocidad"],
+			$_POST["tecnologia"]
+		);
+
+		}
+		else{
+		Alerts::Alerta("warning","Error","Hay datos vacios! Por favor llene los datos necesarios");
+
+		}
+
+}
 ?>

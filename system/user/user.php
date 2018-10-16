@@ -6,6 +6,7 @@ include_once 'system/user/Usuarios.php';
 $db = new dbConn();
 ?>
 <h1>Usuarios</h1>
+<a href="?modal=registrar" class="btn-floating btn-sm blue-gradient"><i class="fa fa-user-plus"></i></a>
 <!-- informacion de eliminado -->
 <div id="userinfo">
   <?php 
@@ -13,12 +14,6 @@ $db = new dbConn();
    ?>
 </div> 
     
-
-<a href="?modal=registrar" class="btn btn-indigo btn-md">
-  Nuevo Usuario<i class="fa fa-user ml-2"></i></a>
-
-
-
 
 
   <div class="row justify-content-md-center">

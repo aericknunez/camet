@@ -30,6 +30,12 @@ class ContratoInternet{
   	
     }
 
+	public function AddContratoCliente($client,$fi,$ff,$fif,$fff,$fc,$cuota,$tcontrato,$velocidad,$tecnologia){
+    	$db = new dbConn();
+
+    	$this->AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota,$tcontrato,$velocidad,$tecnologia);
+
+    }
 
 	public function AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota,$tcontrato,$velocidad,$tecnologia) {
 		$db = new dbConn();
@@ -128,7 +134,7 @@ class ContratoInternet{
 public function InternetContratos(){
     	$db = new dbConn();
     
-	    $a = $db->query("SELECT * FROM contratos WHERE servicio='2' LIMIT 25 ");
+	    $a = $db->query("SELECT * FROM contratos WHERE servicio='2' ORDER BY id DESC");
 		    if($a->num_rows > 0)
 		    {
 		    	echo '<table class="table table-sm">
@@ -149,10 +155,10 @@ public function InternetContratos(){
 		    		if ($r = $db->select("servicio", "servicios", "WHERE id = ".$b["servicio"]."")) { $servicio = $r["servicio"];
 				    } unset($r);
 
-				    if ($x = $db->select("cliente", "datos_internet", "WHERE contrato = ".$b["contrato"]."")) { $velocidad = $x["velocidad"];
+				    if ($x = $db->select("velocidad", "datos_internet", "WHERE cliente = ".$b["cliente"]."")) { $velocidad = $x["velocidad"];
 				    } unset($x);
 				    
-				    if ($x = $db->select("velocidad", "clientes", "WHERE id = ".$b["cliente"]."")) { $cliente = $x["cliente"];
+				    if ($x = $db->select("cliente", "clientes", "WHERE id = ".$b["cliente"]."")) { $cliente = $x["cliente"];
 				    } unset($x);
 		    		 echo '<tr>
 					      <th scope="row">'. $servicio .'</th>
@@ -160,7 +166,7 @@ public function InternetContratos(){
 					      <td>'. $b["fechaInicio"] .'</td>
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
-					      <td>'. $velocidad .'</td>
+					      <td>'. $velocidad .' MB</td>
 					      <td>'. $b["estado"] .'</td>
 					    </tr>';
 		    } // foreach

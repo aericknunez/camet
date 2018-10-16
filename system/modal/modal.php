@@ -16,4 +16,8 @@ if($_REQUEST["modal"]=="addc") include("system/modal/modal/agregarcliente.php");
 
 if($_REQUEST["modal"]=="addcable") include("system/modal/modal/agregarcable.php");
 
+if($_REQUEST["modal"]=="addcablec") include("system/modal/modal/agregarcable_cliente.php");
+
 if($_REQUEST["modal"]=="addinternet") include("system/modal/modal/agregarinternet.php");
+
+if($_REQUEST["modal"]=="addinternetc") include("system/modal/modal/agregarinternet_cliente.php");

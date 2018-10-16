@@ -13,13 +13,35 @@ class FindClientes{
 		if ($r = $db->select("*", "clientes", "WHERE id = $iden")) { 
 
 			echo '<h3 class="text-center">'. $r["cliente"].'</h3>';
-			echo '<p class="font-weight-normal">Dui: '. $r["dui"].'</p>';
-			echo '<p class="font-weight-normal">Tel&eacutefonos: '. $r["tel_casa"].' || '. $r["tel_cel"].'</p>';
-			echo '<p class="font-weight-normal">Direcci&oacuten de residencia: '. $r["dir_residencia"].'</p>';
-			echo '<p class="font-weight-normal">Direcci&oacuten de Cobro: '. $r["dir_cobro"].'</p>';
-			echo '<p class="text-monospace">Contratos otorgados</p>';
 
-			echo '<a href="'.$_SERVER['HTTP_REFERER'].'" class="btn btn-outline-info btn-rounded waves-effect">Cerrar</a>';
+			echo '<table class="table table-sm">
+				  <thead>
+				    <tr>
+				      <th scope="col">DUI</th>
+				      <th scope="col">'. $r["dui"].'</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">Tel&eacutefonos</th>
+				      <td>'. $r["tel_casa"].' || '. $r["tel_cel"].'</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">Direcci&oacuten de residencia</th>
+				      <td>'. $r["dir_residencia"].'</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">Direcci&oacuten de Cobro</th>
+				      <td>'. $r["dir_cobro"].'</td>
+				    </tr>
+				  </tbody>
+				</table>';
+
+			
+			echo '<a href="'.$_SERVER['HTTP_REFERER'].'" class="btn btn-outline-danger btn-rounded waves-effect">Regresar</a>';
+
+			echo '<a href="?modal=addcablec&iden='.$iden.'" class="btn btn-outline-info btn-rounded waves-effect">Agregar contrato cable</a>';
+			echo '<a href="?modal=addinternetc&iden='.$iden.'" class="btn btn-outline-info btn-rounded waves-effect">Agregar contrato internet</a>';
 
 	    } else {
 	        echo "- Error desconocido!!<br />";

@@ -16,9 +16,15 @@ echo '<script>
 	if($_GET["modal"] == "addcable"){
 	echo '<script type="text/javascript" src="assets/js/query/modal.cable.js"></script>';
 	}
+	if($_GET["modal"] == "addcablec"){
+	echo '<script type="text/javascript" src="assets/js/query/modal.cable.cliente.js"></script>';
+	}
 	if($_GET["modal"] == "addinternet"){
 	echo '<script type="text/javascript" src="assets/js/query/modal.internet.js"></script>';
 	}	
+	if($_GET["modal"] == "addinternetc"){
+	echo '<script type="text/javascript" src="assets/js/query/modal.internet.cliente.js"></script>';
+	}
 }
 elseif(isset($_GET["addcliente"])) {
 echo '<script type="text/javascript" src="assets/js/query/addcliente.js"></script>';
