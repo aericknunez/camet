@@ -56,7 +56,7 @@ class ContratoCable{
 		$datos = array();
 	    $datos["cliente"] = $client;
 	    $datos["servicio"] = "1";
-	    $datos["contrato"] = $fi;
+	    $datos["contrato"] = $contract;
 	    $datos["cuota"] = $cuota;
 	    $datos["fecha"] = $fi;
 	    $datos["fechaF"] = $fif;

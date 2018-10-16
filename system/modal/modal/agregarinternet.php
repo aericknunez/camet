@@ -9,9 +9,9 @@
 
 
 
-<div id="caja_cable"></div>
+<div id="caja_internet"></div>
 
-<form class="text-center border border-light p-2" id="form-cable" name="form-cable">
+<form class="text-center border border-light p-2" id="form-internet" name="form-internet">
 
     <div class="form-row mb-2">
         <input type="text" id="dui" name="dui" maxlength="10" minlength="9" class="form-control mb-2" placeholder="DUI">
@@ -41,7 +41,7 @@
             <label for="fechafin">Fecha Fin</label>
         </div>
     </div>
-     <div class="form-row mb-4">
+     <div class="form-row mb-1">
         <div class="col">
             <input placeholder="04" type="number" maxlength="2" minlength="2" id="fechacobro" name="fechacobro" class="form-control">
             <label for="fechacobro">Fecha de cobro</label>
@@ -52,7 +52,28 @@
 
         </div>
     </div>
-    <button class="btn btn-info my-4 btn-block" type="submit" id="btn-cable" name="btn-cable">Agregar Contrato</button>
+
+         <div class="form-row mb-1">
+        <div class="col">
+            <select class="browser-default custom-select" id="tcontrato" name="tcontrato">
+              <option selected value="1">Residencial</option>
+              <option value="2">Pyme</option>
+              <option value="3">Corporativo</option>
+            </select>
+            <label for="tcontrato">Tipo Contrato</label>
+        </div>
+        <div class="col">
+           <input placeholder="2" type="text" id="velocidad" name="velocidad" class="form-control">
+            <label for="velocidad">Velocidad en MB</label>
+
+        </div>
+        <div class="col">
+           <input placeholder="FTTH" type="text" id="tecnologia" name="tecnologia" class="form-control">
+            <label for="tecnologia">Tecnologia</label>
+
+        </div>
+    </div>
+    <button class="btn btn-info my-4 btn-block" type="submit" id="btn-internet" name="btn-internet">Agregar Contrato</button>
 
 
 </form>
@@ -67,7 +88,7 @@
       </div>
       <div class="modal-footer">
 
-          <a href="?cable" class="btn blue-gradient btn-rounded">Regresar</a>
+          <a href="?internet" class="btn blue-gradient btn-rounded">Regresar</a>
     
       </div>
     </div>

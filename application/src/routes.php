@@ -146,7 +146,10 @@ if($helps->ComprobarDui($helps->Dui($_POST["dui"])) == TRUE){
 			$helps->formatFecha($_POST["fechainicio_submit"]),
 			$helps->formatFecha($_POST["fechafin_submit"]),
 			$_POST["fechacobro"],
-			$_POST["cuota"]
+			$_POST["cuota"],
+			$_POST["tcontrato"],
+			$_POST["velocidad"],
+			$_POST["tecnologia"]
 		);
 
 		}

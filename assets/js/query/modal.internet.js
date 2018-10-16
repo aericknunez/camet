@@ -14,15 +14,15 @@ $(document).ready(function()
 		})
 
 
-		$('#btn-cable').click(function(e){ /// para el formulario
+		$('#btn-internet').click(function(e){ /// para el formulario
 			e.preventDefault();
 			$.ajax({
 				url: "application/src/routes.php?op=9",
 				method: "POST",
-				data: $("#form-cable").serialize(),
+				data: $("#form-internet").serialize(),
 				success: function(data){
-					$("#caja_cable").html(data);
-					$("#form-cable").trigger("reset");
+					$("#caja_internet").html(data);
+					$("#form-internet").trigger("reset");
 				}
 			})
 	})

@@ -7,7 +7,7 @@ class ContratoInternet{
 
 
 
-	public function AddContrato($dui,$cliente,$tel,$cel,$dir,$dir2,$fi,$ff,$fif,$fff,$fc,$cuota){
+	public function AddContrato($dui,$cliente,$tel,$cel,$dir,$dir2,$fi,$ff,$fif,$fff,$fc,$cuota,$tcontrato,$velocidad,$tecnologia){
     	$db = new dbConn();
 
     	$datos = array();
@@ -20,7 +20,7 @@ class ContratoInternet{
 	    $datos["estado"] = "1";
 	    if ($db->insert("clientes", $datos)) {
 	       $client = $db->insert_id();
-	       $this->AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota);
+	       $this->AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota,$tcontrato,$velocidad,$tecnologia);
 	    } else {
 
 	    Alerts::Alerta("warning","Error","Ha ocurrido un error!");
@@ -31,12 +31,12 @@ class ContratoInternet{
     }
 
 
-	public function AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota) {
+	public function AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota,$tcontrato,$velocidad,$tecnologia) {
 		$db = new dbConn();
 
 		$datos = array();
 	    $datos["cliente"] = $client;
-	    $datos["servicio"] = "1";
+	    $datos["servicio"] = "2";
 	    $datos["fechaInicio"] = $fi;
 	    $datos["fechaFin"] = $ff;
 	    $datos["fechaInicioF"] = $fif;
@@ -46,6 +46,7 @@ class ContratoInternet{
 	    if ($db->insert("contratos", $datos)) {
 	    $contract = $db->insert_id();
 	    $this->AddCuota($client,$contract,$cuota,$fi,$fif);
+	    $this->AdddatosInternet($client,$contract,$tcontrato,$velocidad,$tecnologia);
 		  Alerts::Alerta("success","Agregado Correctamente","Contrato Agregado corectamente!");
 	    } 
 	}
@@ -55,14 +56,25 @@ class ContratoInternet{
 
 		$datos = array();
 	    $datos["cliente"] = $client;
-	    $datos["servicio"] = "1";
-	    $datos["contrato"] = $fi;
+	    $datos["servicio"] = "2";
+	    $datos["contrato"] = $contract;
 	    $datos["cuota"] = $cuota;
 	    $datos["fecha"] = $fi;
 	    $datos["fechaF"] = $fif;
 	    $db->insert("cuota_establecida", $datos); 
 	}
 
+	    public function AdddatosInternet($client,$contract,$tcontrato,$velocidad,$tecnologia) {
+		$db = new dbConn();
+
+		$datos = array();
+	    $datos["cliente"] = $client;
+	    $datos["contrato"] = $contract;
+	    $datos["tcontrato"] = $tcontrato;
+	    $datos["velocidad"] = $velocidad;
+	    $datos["tecnologia"] = $tecnologia;
+	    $db->insert("datos_internet", $datos); 
+	}
 
     public function VerContratos($user){
     	$db = new dbConn();
@@ -77,6 +89,7 @@ class ContratoInternet{
 			      <th scope="col">Fecha Contrato</th>
 			      <th scope="col">Termina Contrato</th>
 			      <th scope="col">Dia de Pago</th>
+			      <th scope="col">Velocidad</th>
 			      <th scope="col">Estado</th>
 			    </tr>
 			  </thead>
@@ -86,11 +99,15 @@ class ContratoInternet{
 		    		if ($r = $db->select("servicio", "servicios", "WHERE id = ".$b["servicio"]."")) { $servicio = $r["servicio"];
 				    } unset($r);
 
+				    if ($r = $db->select("velocidad", "datos_internet", "WHERE contrato = ".$b["contrato"]."")) { $velocidad = $r["velocidad"];
+				    } unset($r);
+
 		    		 echo '<tr>
 					      <th scope="row">'. $servicio .'</th>
 					      <td>'. $b["fechaInicio"] .'</td>
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
+					      <td>'. $velocidad .'</td>
 					      <td>'. $b["estado"] .'</td>
 					    </tr>';
 		    } // foreach
@@ -122,6 +139,7 @@ public function InternetContratos(){
 			      <th scope="col">Fecha Contrato</th>
 			      <th scope="col">Termina Contrato</th>
 			      <th scope="col">Dia de Pago</th>
+			      <th scope="col">Velocidad</th>
 			      <th scope="col">Estado</th>
 			    </tr>
 			  </thead>
@@ -131,15 +149,18 @@ public function InternetContratos(){
 		    		if ($r = $db->select("servicio", "servicios", "WHERE id = ".$b["servicio"]."")) { $servicio = $r["servicio"];
 				    } unset($r);
 
-				    if ($x = $db->select("cliente", "clientes", "WHERE id = ".$b["cliente"]."")) { $cliente = $x["cliente"];
+				    if ($x = $db->select("cliente", "datos_internet", "WHERE contrato = ".$b["contrato"]."")) { $velocidad = $x["velocidad"];
 				    } unset($x);
 				    
+				    if ($x = $db->select("velocidad", "clientes", "WHERE id = ".$b["cliente"]."")) { $cliente = $x["cliente"];
+				    } unset($x);
 		    		 echo '<tr>
 					      <th scope="row">'. $servicio .'</th>
 					      <th scope="row">'. $cliente .'</th>
 					      <td>'. $b["fechaInicio"] .'</td>
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
+					      <td>'. $velocidad .'</td>
 					      <td>'. $b["estado"] .'</td>
 					    </tr>';
 		    } // foreach
