@@ -244,18 +244,21 @@ Cobro::VerClientes($_REQUEST["iden"]); //paginacion conexion pendiente
 
 
 if($_REQUEST["op"]=="15"){ // cobro
-// include_once '../../system/cobros/Cobro.php'; 
-// if(Cobro::VerificaPrimeraCuota($_REQUEST["cliente"],$_REQUEST["contrato"]) == TRUE){
-// // si ya hay cuotas	
-// } else {
-// // si no hay cuotas	
-// echo Fechas::DiasPendientes($_REQUEST["contrato"]);
-// }
- 
-print_r($_REQUEST);
-
-	
+include_once '../../system/cobros/Cobro.php'; 
+Cobro::RealizarCobro($_REQUEST["cliente"],$_REQUEST["contrato"]);
 }
 
 
+if($_REQUEST["op"]=="16"){ // imprimir
+
+if($_POST["fecha_submit"] != NULL){
+
+	$dia=Fechas::DiaFecha($_POST["fecha_submit"]);
+	
+	include_once '../../system/imprimir/imprime.php';
+	} else {
+		echo "Seleccione la fecha a buscar";
+	}
+
+}
 ?>

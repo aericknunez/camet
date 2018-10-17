@@ -15,10 +15,10 @@ class Inicio{
 	    foreach ($a as $b) {
 	   
 	    	Inicio::AgregaFactura($b["cliente"],$b["id"]);
-	   		echo 'cuantos?: ' .$b["id"] .' <br>';
 	        
 	    } $a->close();
 
+	   $db->close(); // cierra toda la base de datos
     }
 
 
@@ -50,7 +50,7 @@ class Inicio{
 
 		//$fecha=Fechas::SiguientePago($fecha);
 		$cambio = array();
-		    $cambio["edo_pago"] = "1";
+		    $cambio["edo_pago"] = "1"; // 1 = factura generada// para que ya no la busque
 		    $cambio["proximo_pago"] = $fecha;
 		    $cambio["proximo_pagoF"] = Fechas::Format($fecha);
 		    $db->update("contratos", $cambio, "WHERE cliente = '$cliente' and id = '$contrato'");

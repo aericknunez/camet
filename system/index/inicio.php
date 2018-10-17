@@ -8,34 +8,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // echo Encrypt::Decrypt($x);
 ?>
 <div class="card-deck">
-    <!--Panel-->
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Conexiones Pendientes</h5>
-            <p class="card-text">This is a longer panel with supporting text below as a natural lead-in to additional content.
-            This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-    </div>
-    <!--/.Panel-->
 
-    <!--Panel-->
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Ordenes de suspension</h5>
-            <p class="card-text">This panel has supporting text below as a natural lead-in to additional content.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
+<div class="card text-center" style="width: 22rem;">
+    <div class="card-header success-color white-text">
+        Servicios Solicitados
     </div>
-    <!--/.Panel-->
-
-    <!--Panel-->
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Cobros Pendientes</h5>
-            <p class="card-text">This is a wider panel with supporting text below as a natural lead-in to additional content. This panel has even longer content than the first to show that equal height action.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
+    <div class="card-body">
+        <h1 class="display-1">3</h1>
+        <a href="?conexion" class="btn btn-success btn-sm">Ver todos</a>
     </div>
-    <!--/.Panel-->
 </div>
+
+<div class="card text-center" style="width: 22rem;">
+    <div class="card-header warning-color white-text">
+        Cobros Pendientes
+    </div>
+    <div class="card-body">
+        <h1 class="display-1">12</h1>
+        <a href="?cobros" class="btn btn-warning btn-sm">Ver todos</a>
+    </div>
+</div>
+
+<div class="card text-center" style="width: 22rem;">
+    <div class="card-header success-color white-text">
+        Facturas a Imprimir
+    </div>
+    <div class="card-body">
+        <h1 class="display-1">7</h1>
+        <a href="?imprimir" class="btn btn-success btn-sm">Ver todos</a>
+    </div>
+</div>
+</div>
+
+
+
+
+

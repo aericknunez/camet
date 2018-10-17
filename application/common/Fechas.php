@@ -64,6 +64,11 @@ class Fechas{
         return $mes;  
     }
 
+    public function DiaFecha($fecha){ // saca eldia de una fecha
+        $dia=substr($fecha,0,2);
+        return $dia;  
+    }
+
 
 
      public function Format($fecha){  

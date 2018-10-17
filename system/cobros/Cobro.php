@@ -5,6 +5,26 @@ class Cobro{
 
 	}
 
+	public function RealizarCobro($cliente,$contrato){
+    	$db = new dbConn();
+
+    	    $cambio = array();
+		    $cambio["fecha_pagada"] = date("d-m-Y");
+		    $cambio["fecha_pagadaF"] = Fechas::Format(date("d-m-Y"));
+		    $cambio["estado"] = "0";
+		    if ($db->update("control_facturas", $cambio, "WHERE cliente = '$cliente' and contrato ='$contrato' and estado = '1'")) {
+		        
+		        $cambio = array();
+			    $cambio["edo_pago"] = "0";
+			    $db->update("contratos", $cambio, "WHERE cliente = '$cliente' and id ='$contrato' and edo_pago = '1'");
+
+			    Alerts::Alerta("success","Cobrado Correctamente","Se ha cobrado corractamente la cuota!");
+		    } else {
+		    	Alerts::Alerta("danger","Error!","Ha ocurrido un error!");
+		    }
+    }
+
+
 	public function VerClientes($paginax){
     	$db = new dbConn();
 

@@ -46,11 +46,13 @@
                      </ul>
                 </div>
             </li>
-            
+
+            <li><a href="?imprimir" class="collapsible-header waves-effect arrow-r"><i class="fa fa-print"></i> Imprimir<i class="fa fa-angle-down rotate-icon"></i></a></li>
+
             <li><a href="?user" class="collapsible-header waves-effect arrow-r"><i class="fa fa-user"></i> Usuarios<i class="fa fa-angle-down rotate-icon"></i></a></li>
 
             <li><a href="application/includes/logout.php" class="collapsible-header waves-effect arrow-r"><i class="fa fa-power-off"></i> Salir<i class="fa fa-angle-down rotate-icon"></i></a></li>
-
+            
 
         </ul>
     </li>
