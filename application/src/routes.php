@@ -9,6 +9,7 @@ include_once '../../application/common/Alerts.php';
 $alert = new Alerts;
 include_once '../../application/common/Helpers.php';
 $helps = new Helpers;
+include_once '../../application/common/Fechas.php';
 include_once '../../application/common/mysqli.php';
 $db = new dbConn();
 
@@ -101,8 +102,8 @@ if($helps->ComprobarDui($helps->Dui($_POST["dui"])) == TRUE){
 			$helps->MayusInicial($_POST["dir_cobro"]),
 			$_POST["fechainicio_submit"],
 			$_POST["fechafin_submit"],
-			$helps->formatFecha($_POST["fechainicio_submit"]),
-			$helps->formatFecha($_POST["fechafin_submit"]),
+			Fechas::Format($_POST["fechainicio_submit"]),
+			Fechas::Format($_POST["fechafin_submit"]),
 			$_POST["fechacobro"],
 			$_POST["cuota"]
 		);
@@ -143,8 +144,8 @@ if($helps->ComprobarDui($helps->Dui($_POST["dui"])) == TRUE){
 			$helps->MayusInicial($_POST["dir_cobro"]),
 			$_POST["fechainicio_submit"],
 			$_POST["fechafin_submit"],
-			$helps->formatFecha($_POST["fechainicio_submit"]),
-			$helps->formatFecha($_POST["fechafin_submit"]),
+			Fechas::Format($_POST["fechainicio_submit"]),
+			Fechas::Format($_POST["fechafin_submit"]),
 			$_POST["fechacobro"],
 			$_POST["cuota"],
 			$_POST["tcontrato"],
@@ -175,8 +176,8 @@ $contratos = new ContratoCable;
 			$_POST["client"],
 			$_POST["fechainicio_submit"],
 			$_POST["fechafin_submit"],
-			$helps->formatFecha($_POST["fechainicio_submit"]),
-			$helps->formatFecha($_POST["fechafin_submit"]),
+			Fechas::Format($_POST["fechainicio_submit"]),
+			Fechas::Format($_POST["fechafin_submit"]),
 			$_POST["fechacobro"],
 			$_POST["cuota"]
 		);
@@ -203,8 +204,8 @@ $contratos = new ContratoInternet;
 			$_POST["client"],
 			$_POST["fechainicio_submit"],
 			$_POST["fechafin_submit"],
-			$helps->formatFecha($_POST["fechainicio_submit"]),
-			$helps->formatFecha($_POST["fechafin_submit"]),
+			Fechas::Format($_POST["fechainicio_submit"]),
+			Fechas::Format($_POST["fechafin_submit"]),
 			$_POST["fechacobro"],
 			$_POST["cuota"],
 			$_POST["tcontrato"],
@@ -228,14 +229,33 @@ Conexion::VerClientes($_REQUEST["iden"]); //paginacion conexion pendiente
 
 if($_REQUEST["op"]=="13"){
 include_once '../../system/conexion/Conexiones.php';
-
 Conexion::Activar(
 $_REQUEST["iden"],
 date("d-m-Y"),
-Helpers::formatFecha(date("d-m-Y"))
+Fechas::Format(date("d-m-Y"))
 ); //activar conexion
-
-
 }
+
+
+if($_REQUEST["op"]=="14"){
+include_once '../../system/cobros/Cobro.php'; // paginacion cobros
+Cobro::VerClientes($_REQUEST["iden"]); //paginacion conexion pendiente
+}
+
+
+if($_REQUEST["op"]=="15"){ // cobro
+// include_once '../../system/cobros/Cobro.php'; 
+// if(Cobro::VerificaPrimeraCuota($_REQUEST["cliente"],$_REQUEST["contrato"]) == TRUE){
+// // si ya hay cuotas	
+// } else {
+// // si no hay cuotas	
+// echo Fechas::DiasPendientes($_REQUEST["contrato"]);
+// }
+ 
+print_r($_REQUEST);
+
+	
+}
+
 
 ?>

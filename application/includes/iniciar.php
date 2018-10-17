@@ -7,6 +7,17 @@ sec_session_start();
 $user=sha1($_SESSION['username']);
 
 
+include_once '../common/Alerts.php';
+$alert = new Alerts;
+include_once '../common/Helpers.php';
+$helps = new Helpers;
+include_once '../common/Fechas.php';
+include_once '../common/mysqli.php';
+$db = new dbConn();
+
+include_once 'Inicio.php';
+Inicio::GenerarFacturas();  
+
 	function UserInicio($user,$mysqli)
 	{
 		if ($stmt = $mysqli->prepare("SELECT nombre, tipo, tkn, avatar, td 

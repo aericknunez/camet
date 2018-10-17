@@ -39,6 +39,9 @@ echo '<script type="text/javascript" src="assets/js/query/cable.js"></script>';
 elseif(isset($_GET["conexion"])) {
 echo '<script type="text/javascript" src="assets/js/query/conexion.js"></script>';
 } 
+elseif(isset($_GET["cobros"])) {
+echo '<script type="text/javascript" src="assets/js/query/cobros.js"></script>';
+} 
 elseif(isset($_GET["user"])) {
 echo '<script type="text/javascript" src="assets/js/query/user.js"></script>';
 } 

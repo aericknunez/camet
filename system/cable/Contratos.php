@@ -35,6 +35,7 @@ class ContratoCable{
 	       $this->AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota);
     }
 
+    
 
 	public function AddCont($client,$fi,$ff,$fif,$fff,$fc,$cuota) {
 		$db = new dbConn();
@@ -48,6 +49,10 @@ class ContratoCable{
 	    $datos["fechaFinF"] = $fff;
 	    $datos["fechaPago"] = $fc;
 	    $datos["estado"] = "1";
+	    $datos["edo_pago"] = "0";
+	    $datos["proximo_pago"] = Fechas::FechaPagoProximo($fc);
+	    $datos["proximo_pagoF"] = Fechas::Format(Fechas::FechaPagoProximo($fc));
+
 	    if ($db->insert("contratos", $datos)) {
 	    $contract = $db->insert_id();
 	    $this->AddCuota($client,$contract,$cuota,$fi,$fif);
