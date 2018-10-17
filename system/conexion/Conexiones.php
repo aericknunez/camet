@@ -25,21 +25,23 @@ class Conexion{
 	public function VerClientes($paginax){
     	$db = new dbConn();
 
-		    	$nregistro = 25;
-				$pagina = '';
-				if($paginax != NULL)
-				{
-				 $pagina = $paginax;
-				}
-				else
-				{
-				 $pagina = 1;
-				}
-				 
-				$start = ($pagina-1)*$nregistro;
+		 $ar = $db->query("SELECT * FROM contratos");
+		 $num_total_registros = $ar->num_rows; $ar->close();
+		
+		$tamano_pagina = 25;
+
+			$pagina = $paginax;
+			if (!$pagina) {
+			   $inicio = 0;
+			   $pagina = 1;
+			}
+			else {
+			   $inicio = ($pagina - 1) * $tamano_pagina;
+			}
+			$total_paginas = ceil($num_total_registros / $tamano_pagina);
 				 
 
-    $a = $db->query("SELECT * FROM contratos ORDER BY id desc LIMIT ".$start.", ".$nregistro.""); 
+    $a = $db->query("SELECT * FROM contratos ORDER BY id desc LIMIT ".$inicio.", ".$tamano_pagina.""); 
     $numerox=0;
     	if($a->num_rows > 0){
     	$numerox++;
@@ -77,49 +79,36 @@ class Conexion{
 
 
 //// paginacion 
-	
 	 echo '<nav aria-label="pagination example">
     <ul class="pagination pagination-circle pg-blue mb-0">';
 
-
-	    $ar = $db->query("SELECT * FROM contratos");
-		$totalreg = $ar->num_rows; $ar->close();
-		$totalpag = ceil($totalreg/$nregistro);
-    	$start_loop = $pagina;
-    	$diferencia = $total_pages - $pagina;
-    	
-    if($diferencia <= 5)
-    {
-     $start_loop = $totalpag - 1;
-    }
-    $end_loop = $start_loop + 1;
-    if($pagina > 1)
-    {
-     echo '<li class="page-item"><a id="paginador" op="12" iden="1" class="page-link">Primera</a></li>';
-     echo '<li class="page-item">
+	if ($total_paginas > 1) {
+   	if ($pagina != 1)
+   	echo '<li class="page-item">
             <a id="paginador" op="12" iden="'.($pagina - 1).'" class="page-link" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
                 <span class="sr-only">Previous</span>
             </a>
         </li>';
-    }
-    for($i=$start_loop; $i<=$end_loop; $i++)
-    {     
-     echo '<li class="page-item"><a id="paginador" op="12" iden="'.$i.'" class="page-link">'.$i.'</a></li>';
-    }
-    if($pagina <= $end_loop)
-    {
-    	echo '<li class="page-item">
+      for ($i=1;$i<=$total_paginas;$i++) {
+         if ($pagina == $i)
+            //si muestro el índice de la página actual, no coloco enlace
+            echo $pagina;
+         else
+            //si el índice no corresponde con la página mostrada actualmente,
+            //coloco el enlace para ir a esa página
+            echo '<li class="page-item"><a id="paginador" op="12" iden="'.$i.'" class="page-link">'.$i.'</a></li>';
+         }
+      if ($pagina != $total_paginas)
+         echo '<li class="page-item">
             <a id="paginador" op="12" iden="'.($pagina + 1).'" class="page-link" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
                 <span class="sr-only">Next</span>
             </a>
         </li>';
-        echo '<li class="page-item"><a id="paginador" op="12" iden="'.$totalpag.'" class="page-link">Ultima</a></li>';
-    }
-
-    echo '</ul> </nav>';    
-
+		}
+	////////////////////
+     echo '</ul> </nav>';    
   
     }
 
