@@ -48,7 +48,7 @@ class Inicio{
 	public function ActualizarRegistro($fecha,$cliente,$contrato){ // dia cobro
 		$db = new dbConn();
 
-		$fecha=Fechas::SiguientePago($fecha);
+		//$fecha=Fechas::SiguientePago($fecha);
 		$cambio = array();
 		    $cambio["edo_pago"] = "1";
 		    $cambio["proximo_pago"] = $fecha;
@@ -106,9 +106,24 @@ class Inicio{
 	public function ObtenerCuota($cliente,$contrato){
 		$db = new dbConn();
 
-		if ($r = $db->select("cuota", "cuota_establecida", "WHERE cliente = '$cliente' and contrato = '$contrato' order by id desc limit 1")) { 
-        return $r["cuota"];
-    	}unset($r); 
+		$a = $db->query("SELECT * FROM control_facturas WHERE cliente = '$cliente' and contrato = '$contrato'");
+		if($a->num_rows > 0){// si hay facuras
+
+			if ($r = $db->select("cuota", "cuota_establecida", "WHERE cliente = '$cliente' and contrato = '$contrato' order by id desc limit 1")) { 
+	        return $r["cuota"];
+	    	}unset($r); 
+
+		} 
+		else { // si no hay facturas
+
+			if ($r = $db->select("cuota", "cuota_establecida", "WHERE cliente = '$cliente' and contrato = '$contrato' order by id desc limit 1")) { 
+				$DiasPendientes=Fechas::DiasPendientes($contrato);
+				$PrecioDiario=$r["cuota"] / 30;
+	        return $DiasPendientes * $PrecioDiario;
+	    	}unset($r); 
+		}
+		$a->close();
+
 	}
 
 

@@ -24,7 +24,7 @@ class Fechas{
         $dia=substr($fecha,0,2);
         $mes=substr($fecha,3,2);
         $anio= date("Y");
-        $mes + $mes + 1;
+        $mes = $mes + 1;
         
         if($mes > 12) { 
         $mes = "01"; 
