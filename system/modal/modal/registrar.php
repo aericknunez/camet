@@ -1,6 +1,3 @@
-<?php 
-include_once 'application/includes/register.inc.php'; // [para registrar]
- ?>
 <script type="text/JavaScript" src="assets/login/sha512.js"></script> 
 <script type="text/JavaScript" src="assets/login/forms.js"></script> 
      <!-- Modal para modificar la orden -->

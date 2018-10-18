@@ -257,7 +257,7 @@ if($_POST["fecha_submit"] != NULL){
 	
 	include_once '../../system/imprimir/imprime.php';
 	} else {
-		echo "Seleccione la fecha a buscar";
+		Alerts::Alerta("warning","Error","Seleccione una fecha a imprimir");
 	}
 
 }

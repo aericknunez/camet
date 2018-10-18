@@ -56,6 +56,9 @@
 
         </ul>
     </li>
+    <hr>
+    <small> Powewered By</small>  
+    <a href="https://www.hibridosv.com" target="_blank"><img src="assets/img/logo/lgb.png" class="img-fluid flex-center"></a>
     <!--/. Side navigation links -->
 </ul>
 <div class="sidenav-bg mask-strong"></div>

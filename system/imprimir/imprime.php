@@ -4,13 +4,19 @@
     $d = $db->selectGroup("cliente", "contratos", "WHERE fechaPago = '$dia' GROUP BY cliente");
     if ($d->num_rows > 0) {
         while($r = $d->fetch_assoc() ) {
+
+            if ($x = $db->select("cliente, dir_residencia, dir_cobro", "clientes", "WHERE id = ".$r["cliente"]."")) { 
+                  $cliente = $x["cliente"];
+                  $direccion = $x["dir_residencia"];
+                  $direccion2 = $x["dir_cobro"];
+              } unset($x);   
            echo '<div class="col-xs-6 text-right">
-            <h3><a href=" "><img alt="" src="logo.png"/> Logo aquí </a></h3>
+            <h3><img alt="" src="assets/img/logo/logo.png"/></h3>
             </div>
              <div class="panel-heading">
-            <h4>Cliente: Erick Adonai Nunez Martinez</h4>
+            <h4>Cliente: '. $cliente .'</h4>
             </div>
-            <div class="panel-body">Dirección: detalles más detalles</div>
+            <div class="panel-body">Dirección: '. $direccion .'</div>
             <hr />
              
             <pre>Detalles de cobro</pre>
@@ -24,26 +30,40 @@
                 </thead>
                 <tbody>';
           // despues de agrupar busco las facturas
-               $a = $db->query("SELECT * FROM contratos WHERE cliente = ".$r["cliente"]." and edo_pago = 0");
+               $a = $db->query("SELECT * FROM control_facturas WHERE cliente = ".$r["cliente"]." and estado = 1");
+               $num= 0;
+               $st= 0;
                 foreach ($a as $b) {
-                  echo '<tr>
-                          <th scope="row">1</th>
-                          <td>Television por cable</td>
-                          <td>423</td>
+              $num = $num + 1;
+              $st = $st + $b["subtotal"];
+
+                  if ($r = $db->select("servicio", "contratos", "WHERE id = ".$b["contrato"]."")) { 
+
+                        if ($x = $db->select("servicio", "servicios", "WHERE id = ".$r["servicio"]."")) { 
+                          $servicio = $x["servicio"];
+                      } unset($x);                     
+                  } unset($r);  
+
+                    echo '<tr>
+                          <th scope="row">'. $num .'</th>
+                          <td>'.  $servicio . ' | Mes: ' . Fechas::MesEscrito($b["mes"]) . '</td>
+                          <td>'.$b["subtotal"].'</td>
                         </tr>';
                     //echo $b["cliente"] . "s: " . $b["servicio"] . "<br>"; 
                 } $a->close();
+                $imp=$b["impuestos"]/100;
+                $imp=Helpers::format($st*$imp);
             echo '<tr>
                      <td colspan="2" class="text-right">Subtotal</td>
-                    <th scope="row">123</th>
+                    <th scope="row">'. Helpers::format($st) .'</th>
                   </tr>
                   <tr>
                      <td colspan="2" class="text-right">Impuestos</td>
-                    <th scope="row">123</th>
+                    <th scope="row">'. $imp .'</th>
                   </tr>
                   <tr>
                      <td colspan="2" class="text-right"><strong>Total</strong></td>
-                    <th scope="row"><strong>123</strong></th>
+                    <th scope="row"><strong>' . Helpers::format($st+$imp) . '</strong></th>
                   </tr>
                 </tbody>
               </table>';

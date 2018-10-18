@@ -98,7 +98,7 @@ class Usuarios{
 
    <tbody>';
 //busqueda de usuarios
-$a = $db->query("select id, username, email from login_members");
+$a = $db->query("select id, username, email from login_members WHERE id != 1");
     foreach ($a as $b) {
 $user=sha1($b["username"]);
 if ($r = $db->select("nombre, tipo", "login_userdata", "where user = '$user'")) { 
