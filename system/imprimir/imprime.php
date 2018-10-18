@@ -10,13 +10,21 @@
                   $direccion = $x["dir_residencia"];
                   $direccion2 = $x["dir_cobro"];
               } unset($x);   
-           echo '<div class="col-xs-6 text-right">
-            <h3><img alt="" src="assets/img/logo/logo.png"/></h3>
+           echo '<div class="row">
+                        <div class="col-6">
+                                <div class="panel-heading">
+                                <h3>Cliente: '. $cliente .'</h3>
+                                </div>
+                                <div class="panel-body"><h6>
+                                Dirección: '. $direccion .'
+                                </h6></div>
+
+                        </div>
+
+                          <div class="col-6 text-right">
+                          <img alt="" src="assets/img/logo/cametpequeno.png"/>
+                          </div>
             </div>
-             <div class="panel-heading">
-            <h4>Cliente: '. $cliente .'</h4>
-            </div>
-            <div class="panel-body">Dirección: '. $direccion .'</div>
             <hr />
              
             <pre>Detalles de cobro</pre>
