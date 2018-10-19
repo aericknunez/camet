@@ -9,7 +9,7 @@
 
 
 	<div class="col-xs-4 col-sm-3 col-md-3 d-none d-md-block">
-	<img src="assets/img/cientifico.png" alt="">
+	<img src="assets/img/logo/camet.png" alt="">
 	</div>
 
 </div>

@@ -9,6 +9,7 @@ $db = new dbConn();
 
 <div id="contenido_paginador">
 <?php 
+include_once 'application/common/Fechas.php';
 include_once 'application/common/helpers.php';
 include_once 'system/cobros/Cobro.php';
 Cobro::VerClientes(NULL);

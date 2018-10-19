@@ -10,13 +10,23 @@ class Inicio{
     	$db = new dbConn();
     	$ahora=Fechas::Format(date("d-m-Y")); $fiveup=$ahora + 432000;// 5 dias
     	// Busco todas las facturas a generar
-    	$a = $db->query("SELECT * FROM contratos WHERE estado = '2' and edo_pago = '0' and proximo_pagoF BETWEEN '$ahora' and '$fiveup'");
+    	$e = $db->query("SELECT * FROM control_generador WHERE fecha = '$fiveup' and estado = '1'");
 
-	    foreach ($a as $b) {
-	   
-	    	Inicio::AgregaFactura($b["cliente"],$b["id"]);
-	        
-	    } $a->close();
+    	if($e->num_rows == 0){
+
+    		$a = $db->query("SELECT * FROM contratos WHERE estado = '2' and proximo_pagoF = '$fiveup'");
+
+		    foreach ($a as $b) {
+		   
+		    	Inicio::AgregaFactura($b["cliente"],$b["id"]);
+		        
+		    } $a->close();
+
+			Inicio::AgregaRegistro($fiveup);
+    	}
+
+    	
+	    $e->close();
 
 	   $db->close(); // cierra toda la base de datos
     }
@@ -40,18 +50,26 @@ class Inicio{
 	    $datos["estado"] = "1";  // 1=pendiente 0= pagado
 	    if ($db->insert("control_facturas", $datos)) {
 
-	        Inicio::ActualizarRegistro(Inicio::FinCobro($cliente,$contrato),$cliente,$contrato);
+	    	Inicio::ActualizarRegistro(Inicio::FinCobro($cliente,$contrato),$cliente,$contrato);
 	    }
 	}
 
+
+	public function AgregaRegistro($date){
+		$db = new dbConn();
+
+		$datos = array();
+	    $datos["fecha"] = $date;
+	    $datos["estado"] = "1";
+	    $db->insert("control_generador", $datos);
+	}
 
 	public function ActualizarRegistro($fecha,$cliente,$contrato){ // dia cobro
 		$db = new dbConn();
 
 		//$fecha=Fechas::SiguientePago($fecha);
 		$cambio = array();
-		    $cambio["edo_pago"] = "1"; // 1 = factura generada// para que ya no la busque
-		    $cambio["proximo_pago"] = $fecha;
+			$cambio["proximo_pago"] = $fecha;
 		    $cambio["proximo_pagoF"] = Fechas::Format($fecha);
 		    $db->update("contratos", $cambio, "WHERE cliente = '$cliente' and id = '$contrato'");
 	}

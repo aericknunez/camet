@@ -22,8 +22,9 @@ $(document).ready(function()
     $("#contenido_paginador").hide();
 	$("#contenido_clientes").html(htmlexterno);
    	 });
-
 	});
 
-		
+
+
+
 });

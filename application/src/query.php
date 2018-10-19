@@ -25,6 +25,9 @@ echo '<script>
 	if($_GET["modal"] == "addinternetc"){
 	echo '<script type="text/javascript" src="assets/js/query/modal.internet.cliente.js"></script>';
 	}
+	if($_GET["modal"] == "change"){
+	echo '<script type="text/javascript" src="assets/js/query/modal.change.js"></script>';
+	}
 
 }
 elseif(isset($_GET["addcliente"])) {

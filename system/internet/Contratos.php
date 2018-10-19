@@ -51,7 +51,6 @@ class ContratoInternet{
 	    $datos["fechaFinF"] = $fff;
 	    $datos["fechaPago"] = $fc;
 	    $datos["estado"] = "1";
-	    $datos["edo_pago"] = "0";
 	    $datos["proximo_pago"] = Fechas::FechaPagoProximo($fc);
 	    $datos["proximo_pagoF"] = Fechas::Format(Fechas::FechaPagoProximo($fc));
 

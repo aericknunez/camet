@@ -15,9 +15,9 @@
                                 <div class="panel-heading">
                                 <h3>Cliente: '. $cliente .'</h3>
                                 </div>
-                                <div class="panel-body"><h6>
+                                <div class="panel-body"><h3>
                                 Dirección: '. $direccion .'
-                                </h6></div>
+                                </h3></div>
 
                         </div>
 
@@ -32,8 +32,8 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Descripci&oacuten</th>
-                    <th scope="col">Precio</th>
+                    <th scope="col"><h3>Descripci&oacuten</h3></th>
+                    <th scope="col"><h3>Precio</h3></th>
                   </tr>
                 </thead>
                 <tbody>';
@@ -53,28 +53,28 @@
                   } unset($r);  
 
                     echo '<tr>
-                          <th scope="row">'. $num .'</th>
-                          <td>'.  $servicio . ' | Mes: ' . Fechas::MesEscrito($b["mes"]) . '</td>
-                          <td>'.$b["subtotal"].'</td>
+                          <th scope="row"><h3>'. $num .'</h3></th>
+                          <td><h3>'.  $servicio . ' | Mes: ' . Fechas::MesEscrito($b["mes"]) . '</h3></td>
+                          <td><h3>'.$b["subtotal"].'</h3></td>
                         </tr>';
                     //echo $b["cliente"] . "s: " . $b["servicio"] . "<br>"; 
                 } $a->close();
                 $imp=$b["impuestos"]/100;
                 $imp=Helpers::format($st*$imp);
             echo '<tr>
-                     <td colspan="2" class="text-right">Subtotal</td>
-                    <th scope="row">'. Helpers::format($st) .'</th>
+                     <td colspan="2" class="text-right"><h3>Subtotal</h3></td>
+                    <th scope="row"><h3>'. Helpers::format($st) .'</h3></th>
                   </tr>
                   <tr>
-                     <td colspan="2" class="text-right">Impuestos</td>
-                    <th scope="row">'. $imp .'</th>
+                     <td colspan="2" class="text-right"><h3>Impuestos</h3></td>
+                    <th scope="row"><h3>'. $imp .'</h3></th>
                   </tr>
                   <tr>
-                     <td colspan="2" class="text-right"><strong>Total</strong></td>
-                    <th scope="row"><strong>' . Helpers::format($st+$imp) . '</strong></th>
+                     <td colspan="2" class="text-right"><strong><h3>Total</h3></strong></td>
+                    <th scope="row"><strong><h3>' . Helpers::format($st+$imp) . '</h3></strong></th>
                   </tr>
                 </tbody>
-              </table>';
+              </table> <hr>';
                 
         } // while
                 ?>

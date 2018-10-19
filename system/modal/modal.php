@@ -21,3 +21,6 @@ if($_REQUEST["modal"]=="addcablec") include_once 'system/modal/modal/agregarcabl
 if($_REQUEST["modal"]=="addinternet") include_once 'system/modal/modal/agregarinternet.php';
 
 if($_REQUEST["modal"]=="addinternetc") include_once 'system/modal/modal/agregarinternet_cliente.php';
+
+if($_REQUEST["modal"]=="change") include_once 'system/modal/modal/cambiarcontrato.php';
+

@@ -261,4 +261,19 @@ if($_POST["fecha_submit"] != NULL){
 	}
 
 }
+
+
+
+
+if($_REQUEST["op"]=="17"){ // cambiar estado contrato
+	if($_POST["cambio_estado"] == "0"){
+		echo "Seleccione una Opci&oacuten";
+	} else {
+	    $cambio = array();
+	    $cambio["estado"] = $_POST["cambio_estado"];
+	    if ($db->update("contratos", $cambio, "WHERE id=".$_POST["iden"]."")) {
+	        echo Helpers::EstadoContrato($_REQUEST["cambio_estado"]);
+	    }	
+	}
+}
 ?>

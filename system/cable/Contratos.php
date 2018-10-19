@@ -49,7 +49,6 @@ class ContratoCable{
 	    $datos["fechaFinF"] = $fff;
 	    $datos["fechaPago"] = $fc;
 	    $datos["estado"] = "1";
-	    $datos["edo_pago"] = "0";
 	    $datos["proximo_pago"] = Fechas::FechaPagoProximo($fc);
 	    $datos["proximo_pagoF"] = Fechas::Format(Fechas::FechaPagoProximo($fc));
 
@@ -89,6 +88,7 @@ class ContratoCable{
 			      <th scope="col">Termina Contrato</th>
 			      <th scope="col">Dia de Pago</th>
 			      <th scope="col">Estado</th>
+			       <th scope="col">Cambiar</th>
 			    </tr>
 			  </thead>
 			  <tbody>';
@@ -103,6 +103,7 @@ class ContratoCable{
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
 					      <td>'. Helpers::EstadoContrato($b["estado"]) .'</td>
+					      <td><a href="?modal=change&iden='. $b["id"] .'" class="btn-floating btn-sm red"><i class="fa fa-exchange"></i></a></td>
 					    </tr>';
 		    } // foreach
 			    echo '</tbody>

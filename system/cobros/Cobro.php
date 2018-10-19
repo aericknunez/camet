@@ -13,10 +13,6 @@ class Cobro{
 		    $cambio["fecha_pagadaF"] = Fechas::Format(date("d-m-Y"));
 		    $cambio["estado"] = "0";
 		    if ($db->update("control_facturas", $cambio, "WHERE cliente = '$cliente' and contrato ='$contrato' and estado = '1'")) {
-		        
-		        $cambio = array();
-			    $cambio["edo_pago"] = "0";
-			    $db->update("contratos", $cambio, "WHERE cliente = '$cliente' and id ='$contrato' and edo_pago = '1'");
 
 			    Alerts::Alerta("success","Cobrado Correctamente","Se ha cobrado corractamente la cuota!");
 		    } else {
@@ -28,7 +24,7 @@ class Cobro{
 	public function VerClientes($paginax){
     	$db = new dbConn();
 
-    	$ar = $db->query("SELECT * FROM contratos WHERE edo_pago = 1");
+    	$ar = $db->query("SELECT * FROM control_facturas WHERE estado = 1");
 		$num_total_registros = $ar->num_rows; $ar->close();
 		
 		$tamano_pagina = 25;
@@ -44,7 +40,7 @@ class Cobro{
 			$total_paginas = ceil($num_total_registros / $tamano_pagina);
 				 
 
-    $a = $db->query("SELECT * FROM contratos WHERE edo_pago = 1 ORDER BY cliente desc LIMIT ".$inicio.", ".$tamano_pagina.""); 
+    $a = $db->query("SELECT * FROM control_facturas WHERE estado = 1 ORDER BY cliente desc LIMIT ".$inicio.", ".$tamano_pagina.""); 
 
     	if($a->num_rows > 0){
     	echo '<table class="table table-sm">
@@ -52,8 +48,11 @@ class Cobro{
 			    <tr>
 			      <th scope="col">Cliente</th>
 			      <th scope="col">Servicio</th>
-			      <th scope="col">Fecha Contrato</th>
+			      <th scope="col">Mes</th>
 			      <th scope="col">Estado</th>
+			      <th scope="col">SubTotal</th>
+			      <th scope="col">Impuesto</th>
+			      <th scope="col">Total</th>
 			      <th scope="col">Ver</th>
 			    </tr>
 			  </thead>
@@ -62,13 +61,18 @@ class Cobro{
 	    foreach ($a as $b) {
 	    if ($r = $db->select("cliente", "clientes", "WHERE id = ". $b["cliente"] ."")) { 
         $cliente = $r["cliente"];
-    	} unset($r);	
+    	} unset($r);
+    	if ($x = $db->select("servicio, estado", "contratos", "WHERE id = ". $b["contrato"] ."")) { $servicio = $x["servicio"]; $estado = $x["estado"];
+           	} unset($x);	
 	echo '<tr>
 	      <th scope="row">'. $cliente .'</th>
-	      <td>'. Helpers::TipoServicio($b["servicio"]) .'</td>
-	      <td>'. $b["fechaInicio"] .'</td>
-	      <td>'. Helpers::EstadoContrato($b["estado"]) .'</td>
-	      <td><a id="cobrar" op="15" cliente="'. $b["cliente"] .'" contrato="'. $b["id"] .'" class="btn-floating btn-sm green"><i class="fa fa-money"></i></a></td>
+	      <td>'. Helpers::TipoServicio($servicio) .'</td>
+	      <td>'. Fechas::MesEscrito($b["mes"]) .'</td>
+	      <td>'. Helpers::EstadoContrato($estado) .'</td>
+	      <td>'. Helpers::Format($b["subtotal"]) .'</td>
+	      <td>'. Helpers::Format($b["subtotal"] * ($b["impuestos"]/100)) .'</td>
+	   <td>'. Helpers::Format($b["subtotal"] + ($b["subtotal"] * ($b["impuestos"]/100))) .'</td>
+	      <td><a id="cobrar" op="15" cliente="'. $b["cliente"] .'" contrato="'. $b["contrato"] .'" class="btn-floating btn-sm green"><i class="fa fa-money"></i></a></td>
 	      </tr>';	    
     }
 	    echo '</tbody>

@@ -25,7 +25,7 @@ return false;
 });
 	
 
-$("body").on("click","#cliente",function(){
+$("body").on("click","#cliente",function(){ // ver cliente
 	Esconder();
 	var op = $(this).attr('op');
 	var iden = $(this).attr('iden');
@@ -36,6 +36,7 @@ $("body").on("click","#cliente",function(){
    	 });
 
 	});
+
 
 
 $("#search-box").keyup(function(){ /// para la caja de busqueda
