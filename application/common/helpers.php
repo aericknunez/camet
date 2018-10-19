@@ -19,19 +19,27 @@ class Helpers{
     }
 
     function Telefono($numero) {
+        if($numero == NULL){
+          return NULL;  
+        } else{
         $numero=str_replace("-","",$numero);
 
         $num1 = substr($numero, 0, 4);  
         $num2 = substr($numero, 4, 8);  
        return $num1."-".$num2; 
+        }
     }
 
     function Dui($numero) {
+        if($numero == NULL){
+          return NULL;  
+        } else{
         $numero=str_replace("-","",$numero);
 
         $num1 = substr($numero, 0, 8);  
         $num2 = substr($numero, 8, 9);  
-        return $num1."-".$num2; 
+        return $num1."-".$num2;
+        } 
     }
 
      function ComprobarDui($numero) {
