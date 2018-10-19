@@ -5,14 +5,14 @@ class Cobro{
 
 	}
 
-	public function RealizarCobro($cliente,$contrato){
+	public function RealizarCobro($cliente,$contrato,$iden){
     	$db = new dbConn();
 
     	    $cambio = array();
 		    $cambio["fecha_pagada"] = date("d-m-Y");
 		    $cambio["fecha_pagadaF"] = Fechas::Format(date("d-m-Y"));
 		    $cambio["estado"] = "0";
-		    if ($db->update("control_facturas", $cambio, "WHERE cliente = '$cliente' and contrato ='$contrato' and estado = '1'")) {
+		    if ($db->update("control_facturas", $cambio, "WHERE cliente = '$cliente' and contrato ='$contrato' and id ='$iden' and estado = '1'")) {
 
 			    Alerts::Alerta("success","Cobrado Correctamente","Se ha cobrado corractamente la cuota!");
 		    } else {
@@ -53,7 +53,7 @@ class Cobro{
 			      <th scope="col">SubTotal</th>
 			      <th scope="col">Impuesto</th>
 			      <th scope="col">Total</th>
-			      <th scope="col">Ver</th>
+			      <th scope="col">Cobrar</th>
 			    </tr>
 			  </thead>
 			  <tbody>';
@@ -72,7 +72,7 @@ class Cobro{
 	      <td>'. Helpers::Format($b["subtotal"]) .'</td>
 	      <td>'. Helpers::Format($b["subtotal"] * ($b["impuestos"]/100)) .'</td>
 	   <td>'. Helpers::Format($b["subtotal"] + ($b["subtotal"] * ($b["impuestos"]/100))) .'</td>
-	      <td><a id="cobrar" op="15" cliente="'. $b["cliente"] .'" contrato="'. $b["contrato"] .'" class="btn-floating btn-sm green"><i class="fa fa-money"></i></a></td>
+	      <td><a id="cobrar" op="15" cliente="'. $b["cliente"] .'" contrato="'. $b["contrato"] .'" iden="'. $b["id"] .'" class="btn-floating btn-sm green"><i class="fa fa-money"></i></a></td>
 	      </tr>';	    
     }
 	    echo '</tbody>

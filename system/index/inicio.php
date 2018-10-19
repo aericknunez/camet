@@ -37,12 +37,12 @@ $db = new dbConn();
 </div>
 
 <div class="card text-center" style="width: 22rem;">
-    <div class="card-header success-color white-text">
+    <div class="card-header danger-color white-text">
         Facturas a Imprimir
     </div>
     <div class="card-body">
-        <h1 class="display-1">0</h1>
-        <a href="?imprimir" class="btn btn-success btn-sm">Ver todos</a>
+        <h1 class="display-1"><?php echo Index::ContarFacturas() ?></h1>
+        <a href="?generarfacturas" class="btn btn-danger btn-sm">Ver todos</a>
     </div>
 </div>
 </div>

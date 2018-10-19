@@ -16,7 +16,8 @@ include_once '../common/mysqli.php';
 $db = new dbConn();
 
 include_once 'Inicio.php';
-Inicio::GenerarFacturas();  
+Inicio::GenerarFacturas(NULL);  
+Inicio::VerificarRangoFacturas();
 
 	function UserInicio($user,$mysqli)
 	{

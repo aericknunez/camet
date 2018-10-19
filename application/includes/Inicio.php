@@ -6,9 +6,14 @@ class Inicio{
 	}
 
 	
-	public function GenerarFacturas(){ // genera todas las facturas x dias antes
+	public function GenerarFacturas($fechas){ // genera todas las facturas x dias antes
     	$db = new dbConn();
+    	if($fechas == NULL){
     	$ahora=Fechas::Format(date("d-m-Y")); $fiveup=$ahora + 432000;// 5 dias
+    	} else{
+    	$fiveup=$fechas;
+    	}
+    	
     	// Busco todas las facturas a generar
     	$e = $db->query("SELECT * FROM control_generador WHERE fecha = '$fiveup' and estado = '1'");
 
@@ -152,6 +157,33 @@ class Inicio{
 	    foreach ($a as $b) {
 	        return $b["sum(cantidad)"];
 	    } $a->close(); 
+	}
+
+
+
+			public function VerificarRangoFacturas() { /// se ocupa al inicio para ver que dias no se facturaror
+			$db = new dbConn();
+
+			$ahora=Fechas::Format(date("d-m-Y")); $otrafecha=$ahora + 432000;// 5 dias
+
+			$i = $ahora;
+			while ($i <= $otrafecha) {
+
+			$a = $db->query("SELECT * FROM control_generador WHERE fecha = '$i' and estado ='1'");
+			if($a->num_rows == 0){
+
+				$datos = array();
+			    $datos["fecha"] = $i;
+			    $datos["estado"] = "1";
+			    $db->insert("control_generador_up", $datos);
+			
+			}
+            $a->close();
+ 
+			$i = $i + 86400;
+			} // while
+			
+			
 	}
 
 

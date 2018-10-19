@@ -88,7 +88,6 @@ class Usuarios{
 	echo '<table class="table table-striped table-responsive-md btn-table table-sm">
    <thead>
      <tr>
-       <th>#</th>
        <th>Nombre</th>
        <th>Email</th>
        <th>Cuenta</th>
@@ -105,10 +104,7 @@ if ($r = $db->select("nombre, tipo", "login_userdata", "where user = '$user'")) 
 	if($r["tipo"] == "1") $tipo = "Super Admin";
 	if($r["tipo"] == "2") $tipo = "Administrador";
 	if($r["tipo"] == "3") $tipo = "Usuario";
-  if($r["tipo"] == "4") $tipo = "Cocina";
-  if($r["tipo"] == "5") $tipo = "Bar";
 	echo '<tr>
-       <th scope="row">'. $b["id"] . '</th>
        <td>'. $r["nombre"] . '</td>
        <td>'. $b["email"] . '</td>
        <td>'. $tipo . '</td>

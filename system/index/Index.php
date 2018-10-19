@@ -22,6 +22,15 @@ class Index{
 	}
 
 
+			public function ContarFacturas() {
+			$db = new dbConn();
+
+			$a = $db->query("SELECT * FROM control_generador_up WHERE estado = '1'");
+			return $a->num_rows;
+            $a->close();
+	}
+
+
 
 
 

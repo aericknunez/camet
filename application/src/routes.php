@@ -245,7 +245,7 @@ Cobro::VerClientes($_REQUEST["iden"]); //paginacion conexion pendiente
 
 if($_REQUEST["op"]=="15"){ // cobro
 include_once '../../system/cobros/Cobro.php'; 
-Cobro::RealizarCobro($_REQUEST["cliente"],$_REQUEST["contrato"]);
+Cobro::RealizarCobro($_REQUEST["cliente"],$_REQUEST["contrato"],$_REQUEST["iden"]);
 }
 
 
@@ -276,4 +276,13 @@ if($_REQUEST["op"]=="17"){ // cambiar estado contrato
 	    }	
 	}
 }
+
+
+if($_REQUEST["op"]=="18"){ // generar facturas anteriores
+include_once '../../application/includes/Inicio.php';
+Inicio::GenerarFacturas($_REQUEST["iden"]); 
+$db->delete("control_generador_up", "WHERE id=".$_REQUEST["id"]." and fecha = ".$_REQUEST["iden"]."");
+header("location: ../../?generarfacturas");
+}
+
 ?>
