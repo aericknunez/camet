@@ -165,9 +165,7 @@ class Cobro{
     		}
 	    echo '</tbody>
 			</table>';
-		} else {
-		echo 'No se han encontrado registros!';	
-		}	
+		} 	
 		$a->close();
     }
 

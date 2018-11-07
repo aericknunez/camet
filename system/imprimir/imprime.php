@@ -1,3 +1,5 @@
+<a onclick="printDiv('areaImprimir')" class="btn-floating btn-sm blue-gradient"><i class="fa fa-print" id="basic"></i></a>
+
 <div id="areaImprimir">
 <?php 
 
@@ -28,6 +30,7 @@
             <hr />
              
             <pre>Detalles de cobro</pre>
+            <div style="height: 250px;">
             <table class="table table-sm">
                 <thead>
                   <tr>
@@ -74,14 +77,16 @@
                     <th scope="row"><strong><h3>' . Helpers::format($st+$imp) . '</h3></strong></th>
                   </tr>
                 </tbody>
-              </table> <hr>';
+              </table> 
+              Ultima fecha de pago: ' . Fechas::FechaEscrita($b["fin_cobro"]) . '
+              <hr>
+              </div>';
                 
         } // while
                 ?>
 
               </div>
-                  <a onclick="printDiv('areaImprimir')" class="btn-floating btn-sm blue-gradient"><i class="fa fa-print" id="basic"></i></a>
-
+                  
                   <script>
                   function printDiv(nombreDiv) {
                        var contenido= document.getElementById(nombreDiv).innerHTML;

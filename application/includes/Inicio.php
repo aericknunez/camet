@@ -9,7 +9,7 @@ class Inicio{
 	public function GenerarFacturas($fechas){ // genera todas las facturas x dias antes
     	$db = new dbConn();
     	if($fechas == NULL){
-    	$ahora=Fechas::Format(date("d-m-Y")); $fiveup=$ahora + 432000;// 5 dias
+    	$ahora=Fechas::Format(date("d-m-Y")); $fiveup=$ahora + 864000;// 10 dias
     	} else{
     	$fiveup=$fechas;
     	}

@@ -19,6 +19,10 @@ elseif(isset($_GET["imprimir"])) include_once 'system/imprimir/imprimir.php';
 
 elseif(isset($_GET["generarfacturas"])) include_once 'system/generarfacturas/generarfacturas.php';
 
+elseif(isset($_GET["cuotas"])) include_once 'system/cuotas/cuotas.php';
+
+elseif(isset($_GET["extrapagos"])) include_once 'system/extrapagos/extrapagos.php';
+
 elseif(isset($_GET["user"])) include_once 'system/user/user.php';
 
 elseif(isset($_GET["upimages"])) include_once 'system/upimages/upimages.php';

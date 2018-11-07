@@ -48,6 +48,12 @@ echo '<script type="text/javascript" src="assets/js/query/cobros.js"></script>';
 elseif(isset($_GET["imprimir"])) {
 echo '<script type="text/javascript" src="assets/js/query/imprimir.js"></script>';
 } 
+elseif(isset($_GET["cuotas"])) {
+echo '<script type="text/javascript" src="assets/js/query/cuotas.js"></script>';
+} 
+elseif(isset($_GET["extrapagos"])) {
+echo '<script type="text/javascript" src="assets/js/query/extrapagos.js"></script>';
+} 
 elseif(isset($_GET["user"])) {
 echo '<script type="text/javascript" src="assets/js/query/user.js"></script>';
 } 

@@ -88,7 +88,9 @@ class ContratoCable{
 			      <th scope="col">Termina Contrato</th>
 			      <th scope="col">Dia de Pago</th>
 			      <th scope="col">Estado</th>
-			       <th scope="col">Cambiar</th>
+			      <th scope="col">Cambiar</th>
+			      <th scope="col">Ver</th>
+			      <th scope="col">Cobrar</th>
 			    </tr>
 			  </thead>
 			  <tbody>';
@@ -103,14 +105,16 @@ class ContratoCable{
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
 					      <td>'. Helpers::EstadoContrato($b["estado"]) .'</td>
-					      <td><a href="?modal=change&iden='. $b["id"] .'" class="btn-floating btn-sm red"><i class="fa fa-exchange"></i></a></td>
+					      <td><a href="?modal=change&iden='. $b["id"] .'" class="btn-floating btn-sm red"><i class="fa fa-exchange" title="Cambiar el estado del contrato"></i></a></td>
+					      <td><a href="?cuotas&cliente='.$user.'&contrato='. $b["id"] .'" class="btn-floating btn-sm blue" title="Ver historial de coutas cobradas"><i class="fa fa-eye"></i></a></td>
+					      <td><a href="?extrapagos&cliente='.$user.'&contrato='. $b["id"] .'" class="btn-floating btn-sm green" title="Cobrar varias cuotas"><i class="fa fa-money"></i></a></td>
 					    </tr>';
 		    } // foreach
 			    echo '</tbody>
 			</table>';
 	   
 	    } else {
-	    	echo "<br>No se han encontrado contratos asignados a este cliente!";
+	    	echo "<br>Aun no hay contratos asignados!";
 	    }
 	    $a->close();
 	    

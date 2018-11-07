@@ -286,4 +286,24 @@ $db->delete("control_generador_up", "WHERE id=".$_REQUEST["id"]." and fecha = ".
 header("location: ../../?generarfacturas");
 }
 
+
+
+if($_REQUEST["op"]=="19"){ // imprimir
+
+	$inicio=Fechas::Format($_POST["fecha_submit"]);
+	$fin=Fechas::Format($_POST["fecha2_submit"]);
+	$cliente=$_POST["cliente"];
+	$contrato=$_POST["contrato"];
+
+	include_once '../../system/cuotas/imprime_cuotas.php';
+
+}
+
+
+if($_REQUEST["op"]=="20"){ // pagos extra
+include_once '../../system/extrapagos/Pagos.php'; 
+Pagos::RealizarCobro($_POST["cliente"],$_POST["contrato"],$_POST["cantidad"]);
+
+}
+
 ?>
