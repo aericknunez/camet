@@ -108,7 +108,7 @@ class ContratoCable{
 		    } // foreach
 			    echo '</tbody>
 			</table>';
-	    
+	   
 	    } else {
 	    	echo "<br>No se han encontrado contratos asignados a este cliente!";
 	    }

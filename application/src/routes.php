@@ -13,7 +13,6 @@ include_once '../../application/common/Fechas.php';
 include_once '../../application/common/mysqli.php';
 $db = new dbConn();
 
-
 /// usuarios
 if($_REQUEST["op"]=="1"){
 include_once '../../system/user/Usuarios.php';
@@ -73,6 +72,8 @@ FindClientes::VerDetalle($_REQUEST["iden"]); //ver lista de clientes paginados
 include_once '../../system/cable/Contratos.php';
 ContratoCable::Vercontratos($_REQUEST["iden"]); //ver lista de contratos
 
+include_once '../../system/cobros/Cobro.php'; 
+Cobro::VerCliente($_REQUEST["iden"]);
 }
 
 if($_REQUEST["op"]=="7"){ //clientes buscados

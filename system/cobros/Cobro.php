@@ -120,6 +120,61 @@ class Cobro{
 
 
 
+
+
+
+	public function VerCliente($cliente){
+    	$db = new dbConn();
+
+    $a = $db->query("SELECT * FROM control_facturas WHERE cliente='$cliente' and estado = 1 ORDER BY cliente"); 
+
+    	if($a->num_rows > 0){
+
+    	echo '<h3>Cobros Pendientes</h3>
+    	<table class="table table-sm">
+			  <thead>
+			    <tr>
+			      <th scope="col">Cliente</th>
+			      <th scope="col">Servicio</th>
+			      <th scope="col">Mes</th>
+			      <th scope="col">Estado</th>
+			      <th scope="col">SubTotal</th>
+			      <th scope="col">Impuesto</th>
+			      <th scope="col">Total</th>
+			      <th scope="col">Cobrar</th>
+			    </tr>
+			  </thead>
+			  <tbody>';
+
+	    foreach ($a as $b) {
+	    if ($r = $db->select("cliente", "clientes", "WHERE id = ". $b["cliente"] ."")) { 
+        $cliente = $r["cliente"];
+    	} unset($r);
+    	if ($x = $db->select("servicio, estado", "contratos", "WHERE id = ". $b["contrato"] ."")) { $servicio = $x["servicio"]; $estado = $x["estado"];
+           	} unset($x);	
+			echo '<tr>
+	      <th scope="row">'. $cliente .'</th>
+	      <td>'. Helpers::TipoServicio($servicio) .'</td>
+	      <td>'. Fechas::MesEscrito($b["mes"]) .'</td>
+	      <td>'. Helpers::EstadoContrato($estado) .'</td>
+	      <td>'. Helpers::Format($b["subtotal"]) .'</td>
+	      <td>'. Helpers::Format($b["subtotal"] * ($b["impuestos"]/100)) .'</td>
+	   	<td>'. Helpers::Format($b["subtotal"] + ($b["subtotal"] * ($b["impuestos"]/100))) .'</td>
+	      <td><a id="cobrar" op="15" cliente="'. $b["cliente"] .'" contrato="'. $b["contrato"] .'" iden="'. $b["id"] .'" class="btn-floating btn-sm green"><i class="fa fa-money"></i></a></td>
+	      </tr>';	    
+    		}
+	    echo '</tbody>
+			</table>';
+		} else {
+		echo 'No se han encontrado registros!';	
+		}	
+		$a->close();
+    }
+
+
+
+
+
 }
 
 ?>

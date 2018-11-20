@@ -15,8 +15,7 @@ $db = new dbConn();
     } else {
       echo '<p class="alert alert-success">No se han encontrado dias pendientes de facturaci&oacuten</p>';   
     }
-
-   
+ 
     
     $a->close();
 ?>

@@ -25,6 +25,21 @@ $(document).ready(function()
 	});
 
 
+	$("body").on("click","#cobrar",function(){
+	var op = $(this).attr('op');
+	var cliente = $(this).attr('cliente');
+	var contrato = $(this).attr('contrato');
+	var iden = $(this).attr('iden');
+    $.post("application/src/routes.php", {op:op, cliente:cliente, contrato:contrato, iden:iden}, function(htmlexterno){
+    $("#contenido_clientes").show();
+    $("#contenido_paginador").hide();
+	//$("#contenido_clientes").html(htmlexterno);
+	$("#contenido_clientes").load('application/src/routes.php?op=6&iden='+cliente);
+     //window.location.href="?addcliente";
+   	 });
+
+	});
+
 
 
 });
