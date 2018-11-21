@@ -98,15 +98,18 @@ class ContratoCable{
 		    	foreach ($a as $b) {
 		    		if ($r = $db->select("servicio", "servicios", "WHERE id = ".$b["servicio"]."")) { $servicio = $r["servicio"];
 				    } unset($r);
-
+// '. Helpers::EstadoContrato($b["estado"]) .'
 		    		 echo '<tr>
 					      <th scope="row">'. $servicio .'</th>
 					      <td>'. $b["fechaInicio"] .'</td>
 					      <td>'. $b["fechaFin"] .'</td>
 					      <td>'. $b["fechaPago"] .'</td>
-					      <td>'. Helpers::EstadoContrato($b["estado"]) .'</td>
+					      <td><a href="?modal=activacion&iden='. $b["id"] .'">'. Helpers::EstadoContrato($b["estado"]) .'</a></td>
+
 					      <td><a href="?modal=change&iden='. $b["id"] .'" class="btn-floating btn-sm red"><i class="fa fa-exchange" title="Cambiar el estado del contrato"></i></a></td>
+
 					      <td><a href="?cuotas&cliente='.$user.'&contrato='. $b["id"] .'" class="btn-floating btn-sm blue" title="Ver historial de coutas cobradas"><i class="fa fa-eye"></i></a></td>
+
 					      <td><a href="?extrapagos&cliente='.$user.'&contrato='. $b["id"] .'" class="btn-floating btn-sm green" title="Cobrar varias cuotas"><i class="fa fa-money"></i></a></td>
 					    </tr>';
 		    } // foreach

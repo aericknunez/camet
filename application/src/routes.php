@@ -306,4 +306,15 @@ Pagos::RealizarCobro($_POST["cliente"],$_POST["contrato"],$_POST["cantidad"]);
 
 }
 
+
+if($_REQUEST["op"]=="21"){ // cambiar fecha activacion
+include_once '../../system/conexion/Conexiones.php';
+Conexion::Activar(
+$_POST["iden"],
+$_POST["fecha_submit"],
+Fechas::Format($_POST["fecha_submit"])
+); //activar conexion
+
+}
+
 ?>

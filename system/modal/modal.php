@@ -24,3 +24,5 @@ if($_REQUEST["modal"]=="addinternetc") include_once 'system/modal/modal/agregari
 
 if($_REQUEST["modal"]=="change") include_once 'system/modal/modal/cambiarcontrato.php';
 
+if($_REQUEST["modal"]=="activacion") include_once 'system/modal/modal/cambiaractivacion.php';
+

@@ -57,9 +57,10 @@
 
                     echo '<tr>
                           <th scope="row"><h3>'. $num .'</h3></th>
-                          <td><h3>'.  $servicio . ' | Mes: ' . Fechas::MesEscrito($b["mes"]) . '</h3></td>
+                          <td><h3>'.  $servicio . ' | Fecha de Pago: ' . Fechas::FechaEscrita($b["fin_cobro"]) . ' </h3></td>
                           <td><h3>'.$b["subtotal"].'</h3></td>
                         </tr>';
+                     // Mes: ' . Fechas::MesEscrito($b["mes"]) . '
                     //echo $b["cliente"] . "s: " . $b["servicio"] . "<br>"; 
                 } $a->close();
                 $imp=$b["impuestos"]/100;
@@ -78,7 +79,6 @@
                   </tr>
                 </tbody>
               </table> 
-              Ultima fecha de pago: ' . Fechas::FechaEscrita($b["fin_cobro"]) . '
               <hr>
               </div>';
                 

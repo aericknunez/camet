@@ -6,19 +6,20 @@ class Alerts{
       }
 
 
-       public function Alerta($tipo,$encabezado,$texto){ //tipo = warning , success , error , info , danger
+        public function Alerta($tipo,$encabezado,$texto){ 
+       //tipo = warning , success , error , info , danger
         echo '<script>
         toastr.'.$tipo.'("'.$texto.'", "'.$encabezado.'", {
               "closeButton": true,
               "debug": false,
               "newestOnTop": true,
-              "progressBar": true,
+              "progressBar": false,
               "positionClass": "toast-top-center",
               "preventDuplicates": true,
               "onclick": null,
-              "showDuration": 300,
-              "hideDuration": 3000,
-              "timeOut": 5000,
+              "showDuration": 100,
+              "hideDuration": 100,
+              "timeOut": 2000,
               "extendedTimeOut": 1000,
               "showEasing": "swing",
               "hideEasing": "linear",
@@ -27,6 +28,8 @@ class Alerts{
             }) 
         </script>';
         }
+
+        
 
         public function Cambios($return){
         echo '<div class="alert alert-info alert-dismissible">

@@ -10,7 +10,7 @@ class Conexion{
 
 		    $cambio = array();
 		    $cambio["activacion"] = $activacion;
-		     $cambio["activacionF"] = $activacionF;
+		    $cambio["activacionF"] = $activacionF;
 		    $cambio["estado"] = "2";
 		    if ($db->update("contratos", $cambio, "WHERE id=$iden")) {
 		       

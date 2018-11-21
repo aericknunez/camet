@@ -6,11 +6,11 @@ class Helpers{
     } 
 
     function EstadoContrato($string) {
-    if($string == "1") return '<p class="text-success font-weight-bold">Solicitado</p>';
-    if($string == "2") return '<p class="text-primary font-weight-bold">Activo</p>';
-    if($string == "3") return '<p class="text-warning font-weight-bold">Suspendido</p>';
-    if($string == "4") return '<p class="text-danger font-weight-bold">Cancelado</p>';
-    if($string == "5") return '<p class="text-info font-weight-bold">Pausado</p>';
+    if($string == "1") return '<small class="text-success font-weight-bold">Solicitado</small>';
+    if($string == "2") return '<small class="text-primary font-weight-bold">Activo</small>';
+    if($string == "3") return '<small class="text-warning font-weight-bold">Suspendido</small>';
+    if($string == "4") return '<small class="text-danger font-weight-bold">Cancelado</small>';
+    if($string == "5") return '<small class="text-info font-weight-bold">Pausado</small>';
     }
 
     function TipoServicio($string) {

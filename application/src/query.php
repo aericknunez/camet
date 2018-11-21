@@ -28,6 +28,9 @@ echo '<script>
 	if($_GET["modal"] == "change"){
 	echo '<script type="text/javascript" src="assets/js/query/modal.change.js"></script>';
 	}
+	if($_GET["modal"] == "activacion"){
+	echo '<script type="text/javascript" src="assets/js/query/modal.activacion.js"></script>';
+	}
 
 }
 elseif(isset($_GET["addcliente"])) {
